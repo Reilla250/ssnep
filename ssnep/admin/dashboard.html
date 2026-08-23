@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | ssneps.org Admin</title>
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Extra styles for new panels */
+    .toggle-switch { position:relative; display:inline-block; width:40px; height:22px; cursor:pointer; }
+    .toggle-switch input { opacity:0; width:0; height:0; }
+    .toggle-track { position:absolute; inset:0; background:#cbd5e1; border-radius:22px; transition:.2s; }
+    .toggle-thumb { position:absolute; bottom:3px; left:3px; width:16px; height:16px; background:white; border-radius:50%; transition:.2s; }
+    input:checked + .toggle-track { background:#1565C0; }
+    input:checked + .toggle-track .toggle-thumb { transform:translateX(18px); }
+    .color-swatch { width:36px; height:36px; border-radius:8px; border:2px solid #e2e8f0; display:inline-block; cursor:pointer; }
+    .page-status-bar {
+      display:flex; align-items:center; justify-content:space-between;
+      background:white; border:1px solid var(--border); border-radius:10px;
+      padding:14px 20px; margin-bottom:20px; gap:16px;
+    }
+    .page-status-bar .status-group { display:flex; align-items:center; gap:10px; }
+    .dashboard-grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:20px; }
+    .mini-stat { background:white; border-radius:10px; box-shadow:var(--card-shadow); padding:16px 20px; display:flex; align-items:center; gap:12px; }
+    .mini-stat-icon { width:38px; height:38px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0; }
+    .nav-badge-pill { background:#ef4444; color:white; font-size:10px; font-weight:700; padding:2px 6px; border-radius:10px; margin-left:auto; }
+    textarea.code-area { font-family:monospace; font-size:13px; background:#f8fafc; }
+    .section-tabs { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+    .tab-btn { padding:8px 18px; border-radius:8px; border:1.5px solid var(--border); background:white; font-size:13px; font-weight:600; color:var(--text-mid); cursor:pointer; transition:all .2s; }
+    .tab-btn.active { background:var(--blue); border-color:var(--blue); color:white; }
+    .backup-table td, .backup-table th { padding:10px 14px; }
+    .btn-icon-lg { width:42px; height:42px; border-radius:9px; border:1.5px solid var(--border); background:white; display:inline-flex; align-items:center; justify-content:center; font-size:16px; cursor:pointer; transition:all .2s; color:var(--text-mid); }
+    .btn-icon-lg:hover { background:var(--blue); color:white; border-color:var(--blue); }
+    @media(max-width:900px){ .dashboard-grid-3{grid-template-columns:1fr 1fr;} }
+  </style>
+</head>
+<body>
+
+<div class="admin-layout">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">S+</div>
+      <div class="brand-text">
+        <h2>SSNeP+ Admin</h2>
+        <p>System Control Panel</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <p class="nav-section-label">Overview</p>
+      <button class="nav-item" data-nav="dashboard"><i class="fas fa-th-large"></i>Dashboard</button>
+
+      <p class="nav-section-label">Content Management</p>
+      <button class="nav-item" data-nav="team"><i class="fas fa-users"></i>Team Members</button>
+      <button class="nav-item" data-nav="news"><i class="fas fa-newspaper"></i>News &amp; Posts</button>
+      <button class="nav-item" data-nav="programs"><i class="fas fa-hand-holding-medical"></i>Programs</button>
+      <button class="nav-item" data-nav="portfolio"><i class="fas fa-images"></i>Portfolio</button>
+
+      <p class="nav-section-label">Communication</p>
+      <button class="nav-item" data-nav="messages">
+        <i class="fas fa-envelope"></i>Messages
+        <span id="msgBadge" class="nav-badge-pill" style="display:none;">0</span>
+      </button>
+      <button class="nav-item" data-nav="subscribers"><i class="fas fa-bell"></i>Subscribers</button>
+
+      <p class="nav-section-label">Site Control</p>
+      <button class="nav-item" data-nav="pages"><i class="fas fa-file-alt"></i>Page Manager</button>
+      <button class="nav-item" data-nav="nav"><i class="fas fa-bars"></i>Navigation</button>
+      <button class="nav-item" data-nav="theme"><i class="fas fa-palette"></i>Theme &amp; Content</button>
+      <button class="nav-item" data-nav="settings"><i class="fas fa-cog"></i>Site Settings</button>
+      <button class="nav-item" data-nav="backup"><i class="fas fa-database"></i>Backup &amp; Restore</button>
+      <a href="database.html" target="_blank" class="nav-item" style="text-decoration:none;"><i class="fas fa-table"></i>Database Viewer <span style="margin-left:auto;background:#16a34a;color:white;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;">LIVE</span></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar">A</div>
+        <div class="user-info">
+          <p id="sidebarUser">admin</p>
+          <span>Super Administrator</span>
+        </div>
+      </div>
+      <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i>Sign Out</button>
+      <a href="../index.html" target="_blank" style="display:flex;align-items:center;gap:8px;margin-top:8px;padding:8px 10px;background:rgba(255,255,255,0.05);border-radius:8px;font-size:12px;color:rgba(255,255,255,0.5);text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'"><i class="fas fa-external-link-alt" style="font-size:11px;"></i> View Website</a>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN AREA ===================== -->
+  <div class="main-area">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="topbar-title">
+          <h1 id="topbarTitle">Dashboard</h1>
+          <p id="topbarSub">System overview &amp; quick controls</p>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <span id="maintenanceBadge" class="badge badge-green" style="font-size:12px;padding:5px 12px;">🟢 Site Live</span>
+        <button class="topbar-btn" title="Notifications" onclick="navigate('messages')">
+          <i class="fas fa-bell"></i>
+          <span class="dot"></span>
+        </button>
+        <a href="../index.html" target="_blank" class="view-site-btn">
+          <i class="fas fa-external-link-alt"></i>View Site
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- ========== DASHBOARD ========== -->
+      <div class="section-panel" id="panel-dashboard">
+
+        <!-- Status Bar -->
+        <div class="page-status-bar">
+          <div class="status-group">
+            <i class="fas fa-circle" style="color:#16a34a;font-size:10px;"></i>
+            <span style="font-size:13px;font-weight:600;">Website Online</span>
+          </div>
+          <div class="status-group">
+            <a href="../index.html" target="_blank" class="btn btn-outline btn-sm"><i class="fas fa-eye"></i> Preview Site</a>
+            <button class="btn btn-sm" style="background:#fff3cd;color:#92400e;border:1px solid #fde68a;" onclick="toggleMaintenance()">
+              <i class="fas fa-tools"></i> Toggle Maintenance
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="navigate('settings')">
+              <i class="fas fa-cog"></i> Settings
+            </button>
+          </div>
+        </div>
+
+        <!-- 8 Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card" onclick="navigate('team')" style="cursor:pointer;">
+            <div class="stat-icon blue"><i class="fas fa-users"></i></div>
+            <div class="stat-info"><h3 id="statTeam">0</h3><p>Team Members</p></div>
+          </div>
+          <div class="stat-card" onclick="navigate('news')" style="cursor:pointer;">
+            <div class="stat-icon green"><i class="fas fa-newspaper"></i></div>
+            <div class="stat-info"><h3 id="statNews">0</h3><p>Published Posts</p></div>
+          </div>
+          <div class="stat-card" onclick="navigate('programs')" style="cursor:pointer;">
+            <div class="stat-icon orange"><i class="fas fa-hand-holding-medical"></i></div>
+            <div class="stat-info"><h3 id="statPrograms">0</h3><p>Programs</p></div>
+          </div>
+          <div class="stat-card" onclick="navigate('messages')" style="cursor:pointer;">
+            <div class="stat-icon red"><i class="fas fa-envelope"></i></div>
+            <div class="stat-info"><h3 id="statMessages">0</h3><p>Unread Messages</p></div>
+          </div>
+        </div>
+        <div class="stats-grid" style="margin-bottom:24px;">
+          <div class="stat-card" onclick="navigate('subscribers')" style="cursor:pointer;">
+            <div class="stat-icon green"><i class="fas fa-bell"></i></div>
+            <div class="stat-info"><h3 id="statSubscribers">0</h3><p>Subscribers</p></div>
+          </div>
+          <div class="stat-card" onclick="navigate('news')" style="cursor:pointer;">
+            <div class="stat-icon orange"><i class="fas fa-file-edit"></i></div>
+            <div class="stat-info"><h3 id="statDraft">0</h3><p>Draft Posts</p></div>
+          </div>
+          <div class="stat-card" onclick="navigate('team')" style="cursor:pointer;">
+            <div class="stat-icon blue"><i class="fas fa-user-check"></i></div>
+            <div class="stat-info"><h3 id="statActive">0</h3><p>Active Staff</p></div>
+          </div>
+          <div class="stat-card" onclick="navigate('portfolio')" style="cursor:pointer;">
+            <div class="stat-icon red"><i class="fas fa-images"></i></div>
+            <div class="stat-info"><h3 id="statPortfolio">0</h3><p>Portfolio Items</p></div>
+          </div>
+        </div>
+
+        <!-- Main 2-col -->
+        <div style="display:grid;grid-template-columns:3fr 2fr;gap:20px;margin-bottom:20px;">
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Recent News</h3><p>Latest articles</p></div>
+              <button class="btn btn-primary btn-sm" onclick="navigate('news')">All Posts</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="dashRecentNews"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Quick Actions</h3><p>One-click controls</p></div>
+            </div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+              <button class="btn btn-primary" onclick="navigate('team');setTimeout(()=>openTeamModal('add'),100)"><i class="fas fa-user-plus"></i> Add Team Member</button>
+              <button class="btn btn-success" onclick="navigate('news');setTimeout(()=>openNewsModal('add'),100)"><i class="fas fa-plus"></i> Create News Post</button>
+              <button class="btn btn-outline" onclick="navigate('programs');setTimeout(()=>openProgramModal('add'),100)"><i class="fas fa-hand-holding-medical"></i> Add Program</button>
+              <button class="btn btn-outline" onclick="navigate('portfolio');setTimeout(()=>openPortfolioModal('add'),100)"><i class="fas fa-image"></i> Add Portfolio Item</button>
+              <button class="btn btn-outline" onclick="navigate('theme')"><i class="fas fa-palette"></i> Edit Hero &amp; Content</button>
+              <button class="btn btn-outline" onclick="navigate('settings')"><i class="fas fa-cog"></i> Site Settings</button>
+              <button class="btn btn-outline" onclick="exportBackup()"><i class="fas fa-download"></i> Export Backup</button>
+              <a href="../index.html" target="_blank" class="btn btn-outline"><i class="fas fa-external-link-alt"></i> Open Website</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Messages + Activity -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Recent Messages</h3></div>
+              <button class="btn btn-primary btn-sm" onclick="navigate('messages')">View All</button>
+            </div>
+            <div id="dashRecentMessages" style="max-height:320px;overflow-y:auto;"></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div><h3>Activity Log</h3><p>Recent system changes</p></div></div>
+            <div class="card-body"><div class="activity-list" id="dashActivity"></div></div>
+          </div>
+        </div>
+      </div><!-- /dashboard -->
+
+
+      <!-- ========== TEAM ========== -->
+      <div class="section-panel" id="panel-team">
+        <div class="card">
+          <div class="card-header">
+            <div><h3>Team Members</h3><p id="teamCount">0 members</p></div>
+            <button class="btn btn-primary" onclick="openTeamModal('add')"><i class="fas fa-plus"></i> Add Member</button>
+          </div>
+          <div class="card-body" style="padding-bottom:0;">
+            <div class="table-toolbar">
+              <div class="search-box"><i class="fas fa-search"></i><input type="text" id="teamSearch" placeholder="Search name or role…" /></div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Member</th><th>Role</th><th>Phone</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="teamTableBody"></tbody></table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========== NEWS ========== -->
+      <div class="section-panel" id="panel-news">
+        <div class="card">
+          <div class="card-header">
+            <div><h3>News &amp; Posts</h3><p id="newsCount">0 posts</p></div>
+            <button class="btn btn-primary" onclick="openNewsModal('add')"><i class="fas fa-plus"></i> New Post</button>
+          </div>
+          <div class="card-body" style="padding-bottom:0;">
+            <div class="table-toolbar">
+              <div class="search-box"><i class="fas fa-search"></i><input type="text" id="newsSearch" placeholder="Search posts…" /></div>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="newsTableBody"></tbody></table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========== PROGRAMS ========== -->
+      <div class="section-panel" id="panel-programs">
+        <div class="card">
+          <div class="card-header">
+            <div><h3>Programs / Services</h3><p id="programCount">0 programs</p></div>
+            <button class="btn btn-primary" onclick="openProgramModal('add')"><i class="fas fa-plus"></i> Add Program</button>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Icon</th><th>Program</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody id="programTableBody"></tbody></table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========== PORTFOLIO ========== -->
+      <div class="section-panel" id="panel-portfolio">
+        <div class="card">
+          <div class="card-header">
+            <div><h3>Portfolio Items</h3><p id="portfolioCount">0 items</p></div>
+            <button class="btn btn-primary" onclick="openPortfolioModal('add')"><i class="fas fa-plus"></i> Add Item</button>
+          </div>
+          <div class="table-wrap">
+            <table><thead><tr><th>Icon</th><th>Title</th><th>Category</th><th>Actions</th></tr></thead>
+            <tbody id="portfolioTableBody"></tbody></table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========== MESSAGES ========== -->
+      <div class="section-panel" id="panel-messages">
+        <div class="card">
+          <div class="card-header">
+            <div><h3>Contact Messages</h3><p id="msgUnreadCount">0 unread</p></div>
+            <div style="display:flex;gap:8px;">
+              <button class="btn btn-outline btn-sm" onclick="markAllRead()"><i class="fas fa-check-double"></i> Mark All Read</button>
+            </div>
+          </div>
+          <div id="messagesListBody"></div>
+        </div>
+      </div>
+
+
+      <!-- ========== SUBSCRIBERS ========== -->
+      <div class="section-panel" id="panel-subscribers">
+        <div style="display:grid;grid-template-columns:1fr 2.5fr;gap:20px;">
+          <div class="card" style="align-self:start;">
+            <div class="card-header"><h3>Add Subscriber</h3></div>
+            <div class="card-body">
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" id="newSubEmail" placeholder="email@example.com" />
+              </div>
+              <button class="btn btn-primary" style="width:100%;margin-top:8px;" onclick="addSubscriber()"><i class="fas fa-plus"></i> Add</button>
+              <hr style="margin:16px 0;border:none;border-top:1px solid var(--border);">
+              <button class="btn btn-outline" style="width:100%;" onclick="exportSubscribers()"><i class="fas fa-download"></i> Export CSV</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div><h3>Newsletter Subscribers</h3><p id="subCount">0 subscribers</p></div></div>
+            <div class="table-wrap">
+              <table><thead><tr><th>Email</th><th>Date Subscribed</th><th>Action</th></tr></thead>
+              <tbody id="subscribersTableBody"></tbody></table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========== PAGE MANAGER ========== -->
+      <div class="section-panel" id="panel-pages">
+        <div class="card">
+          <div class="card-header">
+            <div><h3>Page Manager</h3><p>Edit SEO metadata for each page</p></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Page</th><th>File</th><th>Meta Title</th><th>Meta Description</th><th>Actions</th></tr></thead>
+              <tbody id="pagesTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========== NAVIGATION MANAGER ========== -->
+      <div class="section-panel" id="panel-nav">
+        <div class="card">
+          <div class="card-header">
+            <div><h3>Navigation Manager</h3><p>Control menu items shown on the website</p></div>
+            <button class="btn btn-primary" onclick="addNavLink()"><i class="fas fa-plus"></i> Add Link</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Label</th><th>URL</th><th>Visible</th><th>Actions</th></tr></thead>
+              <tbody id="navTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ========== THEME & CONTENT ========== -->
+      <div class="section-panel" id="panel-theme">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;">
+
+          <!-- Colors -->
+          <div class="settings-section">
+            <h3><i class="fas fa-palette"></i> Brand Colors</h3>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Primary Color</label>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <input type="color" id="th_primaryColor" value="#1565C0" style="height:40px;width:70px;padding:2px;" />
+                <input type="text"  id="th_primaryColor2" value="#1565C0" style="flex:1;padding:9px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;" />
+                <div id="themeColorPreview" style="width:40px;height:40px;border-radius:8px;background:#1565C0;border:1px solid var(--border);"></div>
+              </div>
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Dark Shade Color (hover states)</label>
+              <input type="color" id="th_darkColor" value="#0D47A1" style="height:40px;width:100%;padding:2px;" />
+            </div>
+            <p style="font-size:12px;color:#94a3b8;margin-top:8px;"><i class="fas fa-info-circle"></i> Color changes apply to the live website immediately after saving.</p>
+          </div>
+
+          <!-- Hero Section -->
+          <div class="settings-section">
+            <h3><i class="fas fa-home"></i> Hero Section (Home Page)</h3>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Hero Main Title</label>
+              <input type="text" id="th_heroTitle" placeholder="e.g. We Work to Improve Lives…" />
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Hero Subtitle / Description</label>
+              <textarea id="th_heroSubtitle" rows="3" placeholder="Short description under the hero title…"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Primary Button Text</label>
+              <input type="text" id="th_heroBtnText" placeholder="Read More" />
+            </div>
+          </div>
+
+          <!-- Mission Section -->
+          <div class="settings-section">
+            <h3><i class="fas fa-bullseye"></i> Mission Section (Home Page)</h3>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Small Label (e.g. "We Are On Mission")</label>
+              <input type="text" id="th_missionLabel" placeholder="We Are On Mission" />
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>Mission Heading</label>
+              <input type="text" id="th_missionTitle" placeholder="Changing Lives for Good" />
+            </div>
+            <div class="form-group">
+              <label>Mission Description</label>
+              <textarea id="th_missionText" rows="4" placeholder="Describe the mission…"></textarea>
+            </div>
+          </div>
+
+          <!-- CTA & Footer -->
+          <div class="settings-section">
+            <h3><i class="fas fa-hand-point-right"></i> CTA Banner &amp; Footer</h3>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>CTA Banner Text</label>
+              <input type="text" id="th_ctaText" placeholder="Join SSNEP community and support our mission…" />
+            </div>
+            <div class="form-group" style="margin-bottom:14px;">
+              <label>CTA Button Text</label>
+              <input type="text" id="th_ctaBtn" placeholder="Read More" />
+            </div>
+            <div class="form-group">
+              <label>Copyright Text</label>
+              <input type="text" id="th_copyright" placeholder="Copyright © 2024, SSNEP. All Rights Reserved." />
+            </div>
+          </div>
+
+        </div>
+        <div style="text-align:right;">
+          <button class="btn btn-primary" style="padding:12px 36px;font-size:15px;" onclick="saveTheme()">
+            <i class="fas fa-save"></i> Save &amp; Apply to Website
+          </button>
+        </div>
+      </div><!-- /theme -->
+
+
+      <!-- ========== SETTINGS ========== -->
+      <div class="section-panel" id="panel-settings">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+          <div class="settings-section">
+            <h3><i class="fas fa-building"></i> Organization Info</h3>
+            <div class="form-group" style="margin-bottom:12px;"><label>Organization Full Name</label><input type="text" id="set_orgName" /></div>
+            <div class="form-group" style="margin-bottom:12px;"><label>Abbreviation (e.g. SSNeP+)</label><input type="text" id="set_orgAbbr" /></div>
+            <div class="form-group" style="margin-bottom:12px;"><label>Main Email</label><input type="email" id="set_email" /></div>
+            <div class="form-group" style="margin-bottom:12px;"><label>Ethics Email</label><input type="email" id="set_ethicsEmail" /></div>
+            <div class="form-group" style="margin-bottom:12px;"><label>Phone Number</label><input type="text" id="set_phone" /></div>
+            <div class="form-group" style="margin-bottom:12px;"><label>FAX Number</label><input type="text" id="set_fax" /></div>
+            <div class="form-group"><label>Office Address</label><textarea id="set_address" rows="3"></textarea></div>
+          </div>
+
+          <div class="settings-section">
+            <h3><i class="fas fa-share-alt"></i> Social Media</h3>
+            <div class="form-group" style="margin-bottom:12px;"><label><i class="fab fa-facebook" style="color:#1565C0;"></i> Facebook URL</label><input type="url" id="set_facebook" /></div>
+            <div class="form-group" style="margin-bottom:24px;"><label><i class="fab fa-twitter" style="color:#1565C0;"></i> Twitter URL</label><input type="url" id="set_twitter" /></div>
+
+            <h3 style="margin-top:0;"><i class="fas fa-info-circle"></i> About Page Text</h3>
+            <div class="form-group" style="margin-bottom:12px;"><label>About Paragraph 1 (HTML allowed)</label><textarea id="set_aboutP1" rows="4" class="code-area"></textarea></div>
+            <div class="form-group"><label>About Paragraph 2 (HTML allowed)</label><textarea id="set_aboutP2" rows="4" class="code-area"></textarea></div>
+          </div>
+
+          <div class="settings-section">
+            <h3><i class="fas fa-shield-alt"></i> Admin Account Security</h3>
+            <div class="form-group" style="margin-bottom:12px;"><label>Admin Username</label><input type="text" id="set_adminUser" /></div>
+            <div class="form-group" style="margin-bottom:24px;"><label>New Password (leave blank to keep)</label><input type="password" id="set_adminPass" placeholder="New password…" /></div>
+
+            <h3 style="margin-top:0;"><i class="fas fa-tools"></i> Maintenance Mode</h3>
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+              <label class="toggle-switch">
+                <input type="checkbox" id="set_maintenanceMode" />
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+              </label>
+              <span style="font-size:13px;font-weight:500;">Enable Maintenance Mode</span>
+            </div>
+            <p style="font-size:12px;color:#94a3b8;">When enabled, visitors see a maintenance message.</p>
+          </div>
+
+          <div class="settings-section">
+            <h3><i class="fas fa-save"></i> Save Settings</h3>
+            <p style="font-size:13px;color:var(--text-mid);margin-bottom:20px;">All changes are saved to the browser's local storage and immediately reflected on the website via the CMS loader.</p>
+            <button class="btn btn-primary" style="width:100%;padding:14px;font-size:15px;margin-bottom:12px;" onclick="saveSettings()">
+              <i class="fas fa-save"></i> Save All Settings
+            </button>
+            <button class="btn btn-outline" style="width:100%;margin-bottom:12px;" onclick="navigate('backup')">
+              <i class="fas fa-database"></i> Go to Backup Manager
+            </button>
+            <hr style="border:none;border-top:1px solid var(--border);margin:16px 0;">
+            <button class="btn btn-danger" style="width:100%;" onclick="resetAllData()">
+              <i class="fas fa-exclamation-triangle"></i> Reset ALL Data to Defaults
+            </button>
+          </div>
+
+        </div>
+      </div><!-- /settings -->
+
+
+      <!-- ========== BACKUP ========== -->
+      <div class="section-panel" id="panel-backup">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+          <div class="card">
+            <div class="card-header"><h3><i class="fas fa-download"></i> Export Backup</h3></div>
+            <div class="card-body">
+              <p style="font-size:13px;color:var(--text-mid);margin-bottom:20px;">Download a complete JSON backup of all your website data including settings, team, news, programs, portfolio, messages, and subscribers.</p>
+              <button class="btn btn-primary" style="width:100%;padding:14px;" onclick="exportBackup()">
+                <i class="fas fa-download"></i> Download Full Backup (JSON)
+              </button>
+              <hr style="margin:20px 0;border:none;border-top:1px solid var(--border);">
+              <button class="btn btn-outline" style="width:100%;" onclick="exportSubscribers()">
+                <i class="fas fa-table"></i> Export Subscribers (CSV)
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header"><h3><i class="fas fa-upload"></i> Restore Backup</h3></div>
+            <div class="card-body">
+              <p style="font-size:13px;color:var(--text-mid);margin-bottom:20px;">Upload a previously exported JSON backup file to restore all your data. This will overwrite current data.</p>
+              <div style="border:2px dashed var(--border);border-radius:10px;padding:28px;text-align:center;cursor:pointer;transition:border-color .2s;" onclick="document.getElementById('importInput').click()" onmouseover="this.style.borderColor='#1565C0'" onmouseout="this.style.borderColor='var(--border)'">
+                <i class="fas fa-cloud-upload-alt" style="font-size:32px;color:#94a3b8;margin-bottom:10px;display:block;"></i>
+                <p style="font-size:13px;color:#64748b;">Click to select backup file (.json)</p>
+              </div>
+              <input type="file" id="importInput" accept=".json" style="display:none;" onchange="importBackup(this)" />
+            </div>
+          </div>
+
+          <div class="card" style="grid-column:1/-1;">
+            <div class="card-header"><h3>Data Inventory</h3><p>Current stored data overview</p></div>
+            <div class="table-wrap">
+              <table class="backup-table">
+                <thead><tr><th>Data Type</th><th>Records</th><th>Status</th></tr></thead>
+                <tbody id="backupStats"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /backup -->
+
+    </main>
+  </div>
+</div>
+
+<!-- ====== TOAST ====== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- ====================================================
+     ALL MODALS
+==================================================== -->
+
+<!-- TEAM MODAL -->
+<div class="modal-overlay" id="teamModal">
+  <div class="modal" style="max-width:600px;">
+    <div class="modal-header">
+      <h3 id="teamModalTitle">Add Team Member</h3>
+      <button class="modal-close" onclick="closeModal('teamModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="teamForm" onsubmit="return false;">
+        <div class="form-grid">
+          <div class="form-group full"><label>Full Name *</label><input type="text" id="tf_name" placeholder="Full name" required /></div>
+          <div class="form-group full"><label>Job Title / Role *</label><input type="text" id="tf_role" placeholder="e.g. Program Officer" required /></div>
+          <div class="form-group"><label>Email</label><input type="email" id="tf_email" placeholder="email@ssnep.org" /></div>
+          <div class="form-group"><label>Phone</label><input type="tel" id="tf_phone" placeholder="+211…" /></div>
+          <div class="form-group"><label>Facebook URL</label><input type="url" id="tf_facebook" placeholder="https://facebook.com/…" /></div>
+          <div class="form-group"><label>Twitter URL</label><input type="url" id="tf_twitter" placeholder="https://twitter.com/…" /></div>
+          <div class="form-group"><label>LinkedIn URL</label><input type="url" id="tf_linkedin" placeholder="https://linkedin.com/in/…" /></div>
+          <div class="form-group"><label>Status</label>
+            <select id="tf_status"><option value="active">Active</option><option value="inactive">Inactive</option></select>
+          </div>
+          <div class="form-group"><label>Avatar Color</label><input type="color" id="tf_color" value="#1565C0" style="height:42px;padding:3px;" /></div>
+          <div class="form-group full"><label>Bio / Description</label><textarea id="tf_bio" rows="3" placeholder="Short bio…"></textarea></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('teamModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveTeam()"><i class="fas fa-save"></i> Save Member</button>
+    </div>
+  </div>
+</div>
+
+<!-- NEWS MODAL -->
+<div class="modal-overlay" id="newsModal">
+  <div class="modal" style="max-width:640px;">
+    <div class="modal-header">
+      <h3 id="newsModalTitle">New Post</h3>
+      <button class="modal-close" onclick="closeModal('newsModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="newsForm" onsubmit="return false;">
+        <div class="form-grid">
+          <div class="form-group full"><label>Post Title *</label><input type="text" id="nf_title" placeholder="News headline…" required /></div>
+          <div class="form-group"><label>Category *</label><input type="text" id="nf_category" placeholder="e.g. HIV/AIDS, Malaria…" required /></div>
+          <div class="form-group"><label>Author</label><input type="text" id="nf_author" placeholder="SSNeP+ Admin" /></div>
+          <div class="form-group"><label>Publication Date</label><input type="date" id="nf_date" /></div>
+          <div class="form-group"><label>Status</label>
+            <select id="nf_status"><option value="draft">Draft</option><option value="published">Published</option></select>
+          </div>
+          <div class="form-group"><label>Tags (comma-separated)</label><input type="text" id="nf_tags" placeholder="HIV, health, awareness" /></div>
+          <div class="form-group full"><label>Excerpt / Summary</label><textarea id="nf_excerpt" rows="3" placeholder="Short summary shown in news list…"></textarea></div>
+          <div class="form-group full"><label>Full Content</label><textarea id="nf_content" rows="6" placeholder="Full article content…"></textarea></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('newsModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveNews()"><i class="fas fa-save"></i> Save Post</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM MODAL -->
+<div class="modal-overlay" id="programModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="programModalTitle">Add Program</h3>
+      <button class="modal-close" onclick="closeModal('programModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="programForm" onsubmit="return false;">
+        <div class="form-grid">
+          <div class="form-group"><label>Program Title *</label><input type="text" id="pf_title" required /></div>
+          <div class="form-group"><label>Icon (emoji)</label><input type="text" id="pf_icon" maxlength="4" placeholder="🩺" /></div>
+          <div class="form-group"><label>Status</label>
+            <select id="pf_status"><option value="active">Active</option><option value="inactive">Inactive</option></select>
+          </div>
+          <div class="form-group full"><label>Short Description (shown on cards)</label><textarea id="pf_description" rows="3"></textarea></div>
+          <div class="form-group full"><label>Full Description (detail page)</label><textarea id="pf_fullDesc" rows="5"></textarea></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('programModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProgram()"><i class="fas fa-save"></i> Save Program</button>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO MODAL -->
+<div class="modal-overlay" id="portfolioModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 id="portfolioModalTitle">Add Portfolio Item</h3>
+      <button class="modal-close" onclick="closeModal('portfolioModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <form id="portfolioForm" onsubmit="return false;">
+        <div class="form-grid">
+          <div class="form-group"><label>Title *</label><input type="text" id="portf_title" required /></div>
+          <div class="form-group"><label>Icon (emoji)</label><input type="text" id="portf_icon" maxlength="4" placeholder="📋" /></div>
+          <div class="form-group"><label>Category</label>
+            <select id="portf_category">
+              <option value="advocacy">Advocacy and Resource Mobilization</option>
+              <option value="health">Health</option>
+              <option value="institutional">Institutional Capacity Building</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Description</label><input type="text" id="portf_description" /></div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('portfolioModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="savePortfolio()"><i class="fas fa-save"></i> Save Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW MESSAGE MODAL -->
+<div class="modal-overlay" id="viewMsgModal">
+  <div class="modal" style="max-width:620px;">
+    <div class="modal-header">
+      <h3>Message Detail</h3>
+      <button class="modal-close" onclick="closeModal('viewMsgModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">From</div>
+          <div style="font-weight:600;" id="viewMsgFrom"></div>
+          <div style="font-size:13px;color:#64748b;" id="viewMsgEmail"></div>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Date</div>
+          <div id="viewMsgDate"></div>
+        </div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:4px;">Subject</div>
+        <div style="font-weight:600;font-size:15px;" id="viewMsgSubject"></div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:8px;">Message</div>
+        <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px;font-size:14px;line-height:1.7;white-space:pre-wrap;" id="viewMsgBody"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('viewMsgModal')">Close</button>
+      <a id="replyEmailLink" href="#" class="btn btn-primary"><i class="fas fa-reply"></i> Reply via Email</a>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE SEO MODAL -->
+<div class="modal-overlay" id="pageModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Edit Page SEO — <span id="pagef_name"></span></h3>
+      <button class="modal-close" onclick="closeModal('pageModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="pagef_id" />
+      <div class="form-group" style="margin-bottom:14px;"><label>Meta Title</label><input type="text" id="pagef_metaTitle" /></div>
+      <div class="form-group"><label>Meta Description</label><textarea id="pagef_metaDesc" rows="4"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('pageModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="savePage()"><i class="fas fa-save"></i> Save SEO</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAV LINK MODAL -->
+<div class="modal-overlay" id="navModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Edit Navigation Link</h3>
+      <button class="modal-close" onclick="closeModal('navModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="navf_id" />
+      <div class="form-group" style="margin-bottom:14px;"><label>Menu Label</label><input type="text" id="navf_label" placeholder="e.g. Home, About, Contact…" /></div>
+      <div class="form-group"><label>URL / Link</label><input type="text" id="navf_href" placeholder="../index.html or https://…" /></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal('navModal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveNavLink()"><i class="fas fa-save"></i> Save Link</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+</html>

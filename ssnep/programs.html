@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Programs | ssneps.org</title>
+  <meta name="description" content="SSNeP+ programs include Malaria prevention, HIV/AIDS Awareness, Tuberculosis treatment, Monitoring & Evaluation, and Stigma reduction in South Sudan." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .program-full-card {
+      background: white;
+      border: 1px solid var(--border);
+      margin-bottom: 36px;
+      overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .program-full-card:hover { box-shadow: var(--shadow-lg); }
+    .program-full-inner {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+    }
+    .program-full-inner.reverse { direction: rtl; }
+    .program-full-inner.reverse > * { direction: ltr; }
+    .program-full-img {
+      width: 300px; height: 240px;
+      object-fit: cover;
+    }
+    .program-full-img-placeholder {
+      width: 300px; height: 240px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 60px;
+    }
+    .program-full-body {
+      padding: 28px 32px;
+    }
+    .program-full-body h2 {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-dark);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .program-full-body p {
+      font-size: 13.5px;
+      color: var(--text-mid);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 768px) {
+      .program-full-inner { grid-template-columns: 1fr; direction: ltr; }
+      .program-full-img, .program-full-img-placeholder { width: 100%; height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="contact-info">
+          <span><i class="fas fa-envelope icon"></i> <a href="mailto:info@ssnep.org">info@ssnep.org</a></span>
+          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012">+211925222012</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-icon">S+</div>
+        <div class="logo-text">
+          <span class="org-name">South Sudan Network of PLHIV</span>
+          <span class="org-abbr">ssneps.org</span>
+        </div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="main-nav" id="mainNav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li>
+          <a href="#">Page <span class="caret">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="portfolio.html">Event</a></li>
+            <li><a href="portfolio.html">Photo Gallery</a></li>
+            <li><a href="#">Testimonial</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="programs.html" class="active">Service</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-search" aria-label="Search"><i class="fas fa-search"></i></button>
+    </div>
+  </header>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner">
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+      <h1>OUR PROGRAMS - SOUTH SUDAN NETWORK OF PLHIV (SSNeP+)</h1>
+    </div>
+  </div>
+
+  <!-- PROGRAMS OVERVIEW GRID -->
+  <section class="section" style="background:var(--off-white); padding-bottom:30px;">
+    <div class="container">
+      <div class="cards-grid">
+        <div class="program-card">
+          <img src="assets/images/malaria.png" alt="Malaria Programs" class="program-card-img" />
+          <div class="program-card-body">
+            <h3>Malaria Programs</h3>
+            <p>Malaria is a serious threat in South Sudan, but SSNEP+ is working hard to change that. We focus on several key areas to prevent malaria, diagnose cases quickly, and ensure proper treatment.</p>
+            <a href="#malaria" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="program-card">
+          <img src="assets/images/hiv-awareness.png" alt="HIV/AIDS Awareness" class="program-card-img" />
+          <div class="program-card-body">
+            <h3>HIV/AIDS Awareness</h3>
+            <p>Many of us know someone affected by HIV/AIDS. This preventable disease can have a devastating impact, but with awareness and access to resources, we can make a difference.</p>
+            <a href="#hiv" class="read-more">Read More</a>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-card-img-placeholder">🩺</div>
+          <div class="program-card-body">
+            <h3>Tuberculosis</h3>
+            <p>South Sudan faces a significant challenge in tackling the public health issues of HIV and Tuberculosis (TB). SSNeP plays a crucial role in addressing this dual burden.</p>
+            <a href="#tb" class="read-more">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILED PROGRAM DESCRIPTIONS -->
+  <section class="section" style="padding-top:40px;">
+    <div class="container">
+
+      <div class="program-full-card" id="malaria">
+        <div class="program-full-inner">
+          <img src="assets/images/malaria.png" alt="Malaria Programs" class="program-full-img" />
+          <div class="program-full-body">
+            <h2>Malaria Programs</h2>
+            <p>Malaria is a serious threat in South Sudan, but SSNEP+ is working hard to change that. We focus on several key areas to prevent malaria, diagnose cases quickly, and ensure proper treatment.</p>
+            <p>Our malaria program distributes Insecticide-Treated Mosquito Nets (ITMNs) to vulnerable communities, conducts rapid diagnostic testing, and works with health facilities to ensure access to antimalarial medicines for PLHIV who are especially susceptible.</p>
+            <a href="contact.html" class="read-more">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-full-card" id="hiv">
+        <div class="program-full-inner reverse">
+          <div class="program-full-body">
+            <h2>HIV/AIDS Awareness</h2>
+            <p>Many of us know someone affected by HIV/AIDS. This preventable disease can have a devastating impact, but with awareness and access to resources, we can make a difference.</p>
+            <p>SSNeP+ conducts community outreach programs including targeted provider and client-initiated HIV testing services, awareness campaigns, and links newly diagnosed individuals to treatment and support groups across South Sudan.</p>
+            <a href="contact.html" class="read-more">Contact Us</a>
+          </div>
+          <img src="assets/images/hiv-awareness.png" alt="HIV/AIDS Awareness" class="program-full-img" />
+        </div>
+      </div>
+
+      <div class="program-full-card" id="tb">
+        <div class="program-full-inner">
+          <div class="program-full-img-placeholder">🩺</div>
+          <div class="program-full-body">
+            <h2>Tuberculosis</h2>
+            <p>South Sudan faces a significant challenge in tackling the public health issues of HIV and Tuberculosis (TB). The South Sudan Network of People Living with HIV/AIDS (SSNeP) plays a crucial role in addressing this dual burden through its impactful two-pronged approach.</p>
+            <p>SSNeP+ coordinates TB screening among PLHIV, supports TB preventive therapy, and works with national health authorities to integrate TB/HIV services at community and facility levels.</p>
+            <a href="contact.html" class="read-more">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-full-card" id="me">
+        <div class="program-full-inner reverse">
+          <div class="program-full-body">
+            <h2>Monitoring &amp; Evaluation</h2>
+            <p>For SSNeP+ to achieve or work toward ensuring high-quality community-based HIV prevention, treatment, care, and retention services in line with the 95-95-95 targets of UNAIDS, SSNeP+ program team had developed key quality assurance mechanisms that effectively contributed to the results achieved for the past 5 years.</p>
+            <a href="contact.html" class="read-more">Contact Us</a>
+          </div>
+          <div class="program-full-img-placeholder">📊</div>
+        </div>
+      </div>
+
+      <div class="program-full-card" id="reporting">
+        <div class="program-full-inner">
+          <div class="program-full-img-placeholder">📋</div>
+          <div class="program-full-body">
+            <h2>Reporting</h2>
+            <p>To ensure effective and efficient reporting, South Sudan Network of PLHIV [SSNeP] used different approaches with key consideration on donor requirements, conditions and National Strategic Plan, SOPs, procedures, indicators and targets and leveraging the various opportunities and relationships, partners and stakeholders in their various capacities.</p>
+            <a href="contact.html" class="read-more">Contact Us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="program-full-card" id="stigma">
+        <div class="program-full-inner reverse">
+          <div class="program-full-body">
+            <h2>Stigma &amp; Discrimination — "Silence Can Be Damaging"</h2>
+            <p>Accelerating Support to Eliminate Health Facility-Based Multiple Layers of Stigma and Discrimination that Impact People Living with HIV (PLHIV) in Juba County, South Sudan.</p>
+            <p>Multiple layers of stigma and discrimination in healthcare settings are significant barriers to accessing quality healthcare services for people living with HIV among key populations including people with disabilities, migrants, and displaced people in Juba County, South Sudan.</p>
+            <p>This project aims to implement comprehensive and innovative initiatives to reduce the multiple layers of stigma and discrimination in 10 selected healthcare facilities providing HIV treatment, care, and prevention services in Juba County. By combating healthcare facility-based stigma and discrimination, SSNeP+ will contribute to fostering an inclusive and safe environment within healthcare facilities so that every individual receives equitable, quality healthcare services.</p>
+            <a href="contact.html" class="read-more">Contact Us</a>
+          </div>
+          <div class="program-full-img-placeholder">🤝</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-overlay"></div>
+    <div class="container">
+      <p>Join SSNEP community and support our mission to supporting PLHIV</p>
+      <a href="contact.html" class="btn-cta">Read More ❯</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About SSNeP+</h4>
+          <p>SSNeP+ is a national umbrella body representing and coordinating the interests and activities of PLHIV member associations and groups across South Sudan.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="programs.html">Service</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="font-size:13px;margin-bottom:12px;">You can keep up with our weekly news/press release by subscribing here.</p>
+          <form class="newsletter-form" onsubmit="alert('Thank you!');this.reset();return false;">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit">Go</button>
+          </form>
+        </div>
+        <div class="footer-col footer-address">
+          <h4>Address</h4>
+          <p><strong>Nimra Talata</strong> — Behind MCC building<br>Juba, South Sudan</p>
+          <p><strong>Phone:</strong> +211 925 222 012</p>
+          <p><strong>FAX:</strong> +211 921 406 329</p>
+          <p><a href="mailto:ethics@ssnep.org" style="color:rgba(255,255,255,0.75);">ethics@ssnep.org</a><br>
+             <a href="mailto:info@ssnep.org" style="color:rgba(255,255,255,0.75);">info@ssnep.org</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>Copyright &copy; 2024 ssneps.org. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="#">Terms and Conditions</a>
+          <a href="#">Privacy Policy</a><a href="admin/login.html"><i class="fas fa-lock" style="font-size:11px;margin-right:3px;"></i>Admin</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cms.js"></script><script src="js/main.js"></script>
+</body>
+</html>

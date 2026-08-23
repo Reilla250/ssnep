@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | ssneps.org</title>
+  <meta name="description" content="Portfolio of SSNeP+ projects including the USAID/AHEC program — quarterly board meetings, capacity building, food distribution, TB, malaria, and HIV awareness." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    .portfolio-bg-1 { background: linear-gradient(135deg, #1565C0, #0D47A1); }
+    .portfolio-bg-2 { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
+    .portfolio-bg-3 { background: linear-gradient(135deg, #E65100, #BF360C); }
+    .portfolio-bg-4 { background: linear-gradient(135deg, #4A148C, #311B92); }
+    .portfolio-bg-5 { background: linear-gradient(135deg, #00695C, #004D40); }
+    .portfolio-bg-6 { background: linear-gradient(135deg, #B71C1C, #7F0000); }
+    .program-subtitle {
+      font-size: 14px;
+      color: var(--text-mid);
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-left">
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="top-bar-right">
+        <div class="contact-info">
+          <span><i class="fas fa-envelope icon"></i> <a href="mailto:info@ssnep.org">info@ssnep.org</a></span>
+          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012">+211925222012</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <div class="logo-icon">S+</div>
+        <div class="logo-text">
+          <span class="org-name">South Sudan Network of PLHIV</span>
+          <span class="org-abbr">ssneps.org</span>
+        </div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="main-nav" id="mainNav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li>
+          <a href="#">Page <span class="caret">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="portfolio.html">Event</a></li>
+            <li><a href="portfolio.html">Photo Gallery</a></li>
+            <li><a href="#">Testimonial</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </li>
+        <li><a href="programs.html">Service</a></li>
+        <li><a href="portfolio.html" class="active">Portfolio</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <button class="nav-search" aria-label="Search"><i class="fas fa-search"></i></button>
+    </div>
+  </header>
+
+  <!-- PAGE BANNER -->
+  <div class="page-banner">
+    <div class="page-banner-overlay"></div>
+    <div class="page-banner-content">
+      <h1>The USAID/Advancing HIV &amp; AIDS Epidemic Control (AHEC) Oct 2021–Sep 2024</h1>
+    </div>
+  </div>
+
+  <!-- PORTFOLIO SECTION -->
+  <section class="section">
+    <div class="container">
+      <p class="program-subtitle">The USAID/Advancing HIV &amp; AIDS Epidemic Control (AHEC) from October 2021 – September 2024</p>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all" id="filter-all">All</button>
+        <button class="filter-btn" data-filter="advocacy" id="filter-advocacy">Advocacy and Resource Mobilization</button>
+        <button class="filter-btn" data-filter="health" id="filter-health">Health</button>
+        <button class="filter-btn" data-filter="institutional" id="filter-institutional">Institutional Capacity Building</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid">
+
+        <div class="portfolio-item" data-category="institutional" id="port-1">
+          <div class="portfolio-placeholder portfolio-bg-1">📋</div>
+          <div class="portfolio-overlay">
+            <h3>Quarterly Board Meetings</h3>
+            <p>Institutional Capacity Building</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="institutional" id="port-2">
+          <div class="portfolio-placeholder portfolio-bg-2">🎓</div>
+          <div class="portfolio-overlay">
+            <h3>Capacity Building to PLHIV Member Associations</h3>
+            <p>Institutional Capacity Building</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="health" id="port-3">
+          <img src="assets/images/malaria.png" alt="Food Distribution" style="width:100%;height:100%;object-fit:cover;" />
+          <div class="portfolio-overlay">
+            <h3>Food Distribution and Care to the PLHIVs</h3>
+            <p>Health Program</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="health" id="port-4">
+          <div class="portfolio-placeholder portfolio-bg-4">🩺</div>
+          <div class="portfolio-overlay">
+            <h3>Tuberculosis</h3>
+            <p>Health Program</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="health" id="port-5">
+          <div class="portfolio-placeholder portfolio-bg-5">🦟</div>
+          <div class="portfolio-overlay">
+            <h3>Malaria Program — Insecticide Treated Mosquito Nets (ITMNs)</h3>
+            <p>Health Program</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="advocacy" id="port-6">
+          <img src="assets/images/hiv-awareness.png" alt="HIV Awareness" style="width:100%;height:100%;object-fit:cover;" />
+          <div class="portfolio-overlay">
+            <h3>HIV/AIDS Awareness Programme</h3>
+            <p>Advocacy and Resource Mobilization</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <div class="cta-banner-overlay"></div>
+    <div class="container">
+      <p>Join SSNEP community and support our mission to supporting PLHIV</p>
+      <a href="contact.html" class="btn-cta">Read More ❯</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>About SSNeP+</h4>
+          <p>SSNeP+ is a national umbrella body representing and coordinating the interests and activities of PLHIV member associations and groups across South Sudan.</p>
+          <div class="footer-social">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="programs.html">Service</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <p style="font-size:13px;margin-bottom:12px;">You can keep up with our weekly news/press release by subscribing here.</p>
+          <form class="newsletter-form" onsubmit="alert('Thank you!');this.reset();return false;">
+            <input type="email" placeholder="Your email address" required />
+            <button type="submit">Go</button>
+          </form>
+        </div>
+        <div class="footer-col footer-address">
+          <h4>Address</h4>
+          <p><strong>Nimra Talata</strong> — Behind MCC building<br>Juba, South Sudan</p>
+          <p><strong>Phone:</strong> +211 925 222 012</p>
+          <p><strong>FAX:</strong> +211 921 406 329</p>
+          <p><a href="mailto:ethics@ssnep.org" style="color:rgba(255,255,255,0.75);">ethics@ssnep.org</a><br>
+             <a href="mailto:info@ssnep.org" style="color:rgba(255,255,255,0.75);">info@ssnep.org</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>Copyright &copy; 2024 ssneps.org. All Rights Reserved.</p>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="#">Terms and Conditions</a>
+          <a href="#">Privacy Policy</a><a href="admin/login.html"><i class="fas fa-lock" style="font-size:11px;margin-right:3px;"></i>Admin</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/cms.js"></script><script src="js/main.js"></script>
+</body>
+</html>

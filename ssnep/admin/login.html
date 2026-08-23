@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | ssneps.org Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0D47A1 0%, #1565C0 40%, #1a237e 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    body::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .login-card {
+      background: white;
+      border-radius: 16px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.35);
+      position: relative;
+      z-index: 2;
+    }
+    .login-logo {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .login-logo .logo-circle {
+      width: 72px; height: 72px;
+      background: linear-gradient(135deg, #1565C0, #0D47A1);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      color: white; font-size: 28px; font-weight: 800;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 24px rgba(21,101,192,0.4);
+    }
+    .login-logo h1 {
+      font-size: 20px; font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+    .login-logo p {
+      font-size: 13px; color: #888;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group label {
+      display: block;
+      font-size: 13px; font-weight: 600;
+      color: #333; margin-bottom: 8px;
+    }
+    .input-wrap {
+      position: relative;
+    }
+    .input-wrap i {
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: #aaa; font-size: 15px;
+    }
+    .input-wrap input {
+      width: 100%;
+      padding: 12px 14px 12px 42px;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      color: #222;
+    }
+    .input-wrap input:focus {
+      border-color: #1565C0;
+      box-shadow: 0 0 0 3px rgba(21,101,192,0.12);
+    }
+    .toggle-pw {
+      position: absolute; right: 14px; top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer; color: #aaa; font-size: 14px;
+      background: none; border: none; padding: 0;
+    }
+    .toggle-pw:hover { color: #1565C0; }
+    .login-btn {
+      width: 100%;
+      padding: 13px;
+      background: linear-gradient(135deg, #1565C0, #0D47A1);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      letter-spacing: 0.3px;
+      margin-top: 4px;
+    }
+    .login-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+    .login-btn:active { transform: translateY(0); }
+    .login-btn i { margin-right: 8px; }
+    .error-msg {
+      background: #ffebee;
+      border: 1px solid #ffcdd2;
+      color: #c62828;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      display: none;
+    }
+    .credentials-hint {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #f0f0f0;
+      font-size: 12px;
+      color: #aaa;
+    }
+    .credentials-hint strong { color: #1565C0; }
+    .back-link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+    .back-link a {
+      color: #1565C0;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .back-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="logo-circle">S+</div>
+      <h1>SSNeP+ Admin Panel</h1>
+      <p>Sign in to manage your website content</p>
+    </div>
+
+    <div class="error-msg" id="errorMsg">
+      <i class="fas fa-exclamation-circle"></i> Invalid username or password. Please try again.
+    </div>
+
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <div class="input-wrap">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" name="username" placeholder="Enter username" required autocomplete="username" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" name="password" placeholder="Enter password" required autocomplete="current-password" />
+          <button type="button" class="toggle-pw" onclick="togglePw()" id="togglePwBtn">
+            <i class="fas fa-eye" id="eyeIcon"></i>
+          </button>
+        </div>
+      </div>
+      <button type="submit" class="login-btn" id="loginBtn">
+        <i class="fas fa-sign-in-alt"></i> Sign In
+      </button>
+    </form>
+
+    <div class="credentials-hint">
+      Default: <strong>admin</strong> / <strong>ssnep@2024</strong>
+    </div>
+    <div class="back-link">
+      <a href="../index.html"><i class="fas fa-arrow-left"></i> Back to Website</a>
+    </div>
+  </div>
+
+  <script>
+    function togglePw() {
+      const pw = document.getElementById('password');
+      const icon = document.getElementById('eyeIcon');
+      if (pw.type === 'password') {
+        pw.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+      } else {
+        pw.type = 'password';
+        icon.className = 'fas fa-eye';
+      }
+    }
+    function handleLogin(e) {
+      e.preventDefault();
+      const u = document.getElementById('username').value.trim();
+      const p = document.getElementById('password').value;
+      const btn = document.getElementById('loginBtn');
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+      btn.disabled = true;
+      setTimeout(() => {
+        if (u === 'admin' && p === 'ssnep@2024') {
+          sessionStorage.setItem('ssnep_admin', 'true');
+          sessionStorage.setItem('ssnep_admin_user', u);
+          window.location.href = 'dashboard.html';
+        } else {
+          document.getElementById('errorMsg').style.display = 'block';
+          btn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+          btn.disabled = false;
+        }
+      }, 800);
+    }
+  </script>
+</body>
+</html>
