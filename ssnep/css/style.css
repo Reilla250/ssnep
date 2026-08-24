@@ -1115,13 +1115,27 @@ img { max-width: 100%; display: block; }
 /* ====================================================
    RESPONSIVE
    ==================================================== */
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 0;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
 @media (max-width: 1024px) {
   .team-grid { grid-template-columns: repeat(3, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  .counter-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 900px) {
-  .cards-grid { grid-template-columns: 1fr 1fr; }
+  .cards-grid { grid-template-columns: repeat(2, 1fr); }
   .three-zeros { grid-template-columns: 1fr; }
   .mission-strip { grid-template-columns: 1fr; }
   .mission-image { min-height: 200px; }
@@ -1156,7 +1170,8 @@ img { max-width: 100%; display: block; }
   .hero-content h1 { font-size: 26px; }
   .team-grid { grid-template-columns: repeat(2, 1fr); }
   .cards-grid { grid-template-columns: 1fr; }
-  .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .counter-grid { grid-template-columns: repeat(2, 1fr); }
   .cta-banner .container { flex-direction: column; text-align: center; }
   .mission-content { padding: 40px 24px; }
   .form-row { grid-template-columns: 1fr; }
@@ -1168,9 +1183,15 @@ img { max-width: 100%; display: block; }
 @media (max-width: 480px) {
   .team-grid { grid-template-columns: 1fr; }
   .portfolio-grid { grid-template-columns: 1fr; }
+  .counter-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
   .hero-content h1 { font-size: 20px; }
   .hero-content p { font-size: 13px; }
   .top-bar .contact-info { font-size: 11px; flex-direction: column; gap: 4px; }
+  .searchbar form {
+    width: calc(100vw - 32px);
+    right: -10px;
+  }
 }
 
 /* ====================================================

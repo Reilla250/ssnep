@@ -26,7 +26,7 @@ const Store = {
       orgName:'South Sudan Network of People Living with HIV', orgAbbr:'SSNeP+',
       email:'info@ssneps.org',
       larkEmailUrl:'https://www.larksuite.com/',
-      phone:'+211 925 222 012', fax:'+211 921 406 329',
+      phone:'+211 925 222 012', fax:'',
       address:'Nimra Talata — Behind MCC building\nJuba, South Sudan',
       facebook:'#', twitter:'#',
       primaryColor:'#286DC1',
