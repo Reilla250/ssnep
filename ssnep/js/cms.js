@@ -70,9 +70,6 @@ const CMS = {
     document.querySelectorAll('[data-cms="footer-email"]').forEach(el => {
       if (s.email) { el.textContent = s.email; el.href = 'mailto:' + s.email; }
     });
-    document.querySelectorAll('[data-cms="footer-ethics-email"]').forEach(el => {
-      if (s.ethicsEmail) { el.textContent = s.ethicsEmail; el.href = 'mailto:' + s.ethicsEmail; }
-    });
     // Apply theme color
     if (s.primaryColor) {
       document.documentElement.style.setProperty('--blue', s.primaryColor);
@@ -214,7 +211,6 @@ const CMS = {
     if (el('cms-contact-phone') && s.phone)     el('cms-contact-phone').textContent  = s.phone;
     if (el('cms-contact-fax') && s.fax)         el('cms-contact-fax').textContent    = s.fax;
     if (el('cms-contact-email') && s.email)     { el('cms-contact-email').textContent = s.email; el('cms-contact-email').href = 'mailto:'+s.email; }
-    if (el('cms-contact-ethics') && s.ethicsEmail) { el('cms-contact-ethics').textContent = s.ethicsEmail; el('cms-contact-ethics').href = 'mailto:'+s.ethicsEmail; }
   },
 
   esc(str) {

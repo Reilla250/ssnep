@@ -24,7 +24,7 @@ const Store = {
   DEFAULTS: {
     settings: {
       orgName:'South Sudan Network of People Living with HIV', orgAbbr:'SSNeP+',
-      email:'info@ssneps.org', ethicsEmail:'ethics@ssnep.org',
+      email:'info@ssneps.org',
       phone:'+211 925 222 012', fax:'+211 921 406 329',
       address:'Nimra Talata — Behind MCC building\nJuba, South Sudan',
       facebook:'#', twitter:'#',
@@ -859,7 +859,7 @@ function saveTheme() {
 // ====================================================
 function renderSettings() {
   const s = Store.get('settings', Store.DEFAULTS.settings);
-  const fields = ['orgName','orgAbbr','email','ethicsEmail','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
+  const fields = ['orgName','orgAbbr','email','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
   fields.forEach(f => {
     const el = document.getElementById('set_'+f); if(el) el.value = s[f]||'';
   });
@@ -868,7 +868,7 @@ function renderSettings() {
 
 function saveSettings() {
   let s = Store.get('settings', Store.DEFAULTS.settings);
-  const fields = ['orgName','orgAbbr','email','ethicsEmail','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
+  const fields = ['orgName','orgAbbr','email','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
   fields.forEach(f => { const el = document.getElementById('set_'+f); if(el) s[f] = el.value.trim(); });
   const newPass = document.getElementById('set_adminPass').value;
   if (newPass) s.adminPass = newPass;
