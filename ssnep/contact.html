@@ -23,8 +23,8 @@
       </div>
       <div class="top-bar-right">
         <div class="contact-info">
-          <span><i class="fas fa-envelope icon"></i> <a href="mailto:info@ssneps.org">info@ssneps.org</a></span>
-          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012">+211 925 222 012</a></span>
+          <span><i class="fas fa-envelope icon"></i> <a href="mailto:info@ssneps.org" data-cms="email">info@ssneps.org</a></span>
+          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012" data-cms="phone">+211 925 222 012</a></span>
         </div>
       </div>
     </div>
@@ -92,7 +92,7 @@
             <div class="contact-icon" style="width:45px; height:45px; background:var(--blue); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;"><i class="fas fa-map-marker-alt"></i></div>
             <div>
               <h4 style="font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:4px;">Address</h4>
-              <p style="font-size:13px; color:var(--text-mid); line-height:1.6;">Nimra Talata — Behind MCC building<br>Juba, South Sudan</p>
+              <p style="font-size:13px; color:var(--text-mid); line-height:1.6;" id="cms-contact-address">Nimra Talata — Behind MCC building<br>Juba, South Sudan</p>
             </div>
           </div>
 
@@ -100,8 +100,8 @@
             <div class="contact-icon" style="width:45px; height:45px; background:var(--blue); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;"><i class="fas fa-phone-alt"></i></div>
             <div>
               <h4 style="font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:4px;">Phone Number</h4>
-              <p style="font-size:13px; color:var(--text-mid); line-height:1.6;">Office Phone: <a href="tel:+211925222012" style="color:var(--blue);">+211 925 222 012</a></p>
-              <p style="font-size:13px; color:var(--text-mid); line-height:1.6;">Office FAX: +211 921 406 329</p>
+              <p style="font-size:13px; color:var(--text-mid); line-height:1.6;">Office Phone: <a href="tel:+211925222012" style="color:var(--blue);" id="cms-contact-phone">+211 925 222 012</a></p>
+              <p style="font-size:13px; color:var(--text-mid); line-height:1.6;">Office FAX: <span id="cms-contact-fax">+211 921 406 329</span></p>
             </div>
           </div>
 
@@ -109,7 +109,7 @@
             <div class="contact-icon" style="width:45px; height:45px; background:var(--blue); color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0;"><i class="fas fa-envelope"></i></div>
             <div>
               <h4 style="font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:4px;">Email Address</h4>
-              <a href="mailto:info@ssneps.org" style="font-size:13px; color:var(--blue);">info@ssneps.org</a>
+              <a href="mailto:info@ssneps.org" style="font-size:13px; color:var(--blue);" id="cms-contact-email">info@ssneps.org</a>
             </div>
           </div>
 
@@ -213,10 +213,10 @@
         </div>
         <div class="footer-col footer-address">
           <h4>Address</h4>
-          <p><i class="fas fa-map-marker-alt" style="color:var(--blue); margin-right:6px;"></i>Nimra Talata — Behind MCC building<br>Juba — South Sudan</p>
-          <p><i class="fas fa-phone" style="color:var(--blue); margin-right:6px;"></i>Phone: +211 925 222 012</p>
-          <p><i class="fas fa-fax" style="color:var(--blue); margin-right:6px;"></i>FAX: +211 921 406 329</p>
-          <p><i class="fas fa-envelope" style="color:var(--blue); margin-right:6px;"></i><a href="mailto:info@ssneps.org" style="color:white;">info@ssneps.org</a></p>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--blue); margin-right:6px;"></i><span data-cms="footer-address">Nimra Talata — Behind MCC building<br>Juba — South Sudan</span></p>
+          <p><i class="fas fa-phone" style="color:var(--blue); margin-right:6px;"></i>Phone: <span data-cms="footer-phone">+211 925 222 012</span></p>
+          <p><i class="fas fa-fax" style="color:var(--blue); margin-right:6px;"></i>FAX: <span data-cms="footer-fax">+211 921 406 329</span></p>
+          <p><i class="fas fa-envelope" style="color:var(--blue); margin-right:6px;"></i><a href="mailto:info@ssneps.org" style="color:white;" data-cms="footer-email">info@ssneps.org</a></p>
         </div>
       </div>
     </div>

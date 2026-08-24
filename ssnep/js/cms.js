@@ -222,7 +222,7 @@ const CMS = {
     const s = this.get('settings', {});
     const el = id => document.getElementById(id);
     if (el('cms-contact-address') && s.address) el('cms-contact-address').innerHTML = s.address.replace(/\n/g,'<br>');
-    if (el('cms-contact-phone') && s.phone)     el('cms-contact-phone').textContent  = s.phone;
+    if (el('cms-contact-phone') && s.phone)     { el('cms-contact-phone').textContent  = s.phone; el('cms-contact-phone').href = 'tel:' + s.phone.replace(/\s/g,''); }
     if (el('cms-contact-fax') && s.fax)         el('cms-contact-fax').textContent    = s.fax;
     if (el('cms-contact-email') && s.email)     { el('cms-contact-email').textContent = s.email; el('cms-contact-email').href = 'mailto:'+s.email; }
   },
