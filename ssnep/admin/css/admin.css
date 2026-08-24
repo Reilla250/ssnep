@@ -220,6 +220,28 @@ button { cursor: pointer; font-family: 'Inter', sans-serif; }
 }
 .view-site-btn:hover { background: var(--blue-dark); }
 
+.topbar-email-btn {
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.25);
+  text-decoration: none;
+}
+.topbar-email-btn:hover {
+  background: linear-gradient(135deg, #0284c7, #0369a1);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.35);
+}
+
 /* Content */
 .content {
   padding: 28px;

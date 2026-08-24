@@ -61,6 +61,7 @@
         <span id="msgBadge" class="nav-badge-pill" style="display:none;">0</span>
       </button>
       <button class="nav-item" data-nav="subscribers"><i class="fas fa-bell"></i>Subscribers</button>
+      <a href="https://mail.larksuite.com/" target="_blank" rel="noopener noreferrer" id="larkEmailNavBtn" class="nav-item" style="text-decoration:none;"><i class="fas fa-paper-plane" style="color:#38bdf8;"></i>Business Email<span style="margin-left:auto;background:#38bdf8;color:#0f172a;font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;display:flex;align-items:center;gap:3px;">LARK <i class="fas fa-external-link-alt" style="font-size:8px;"></i></span></a>
 
       <p class="nav-section-label">Site Control</p>
       <button class="nav-item" data-nav="pages"><i class="fas fa-file-alt"></i>Page Manager</button>
@@ -101,6 +102,11 @@
           <i class="fas fa-bell"></i>
           <span class="dot"></span>
         </button>
+        <a href="https://mail.larksuite.com/" target="_blank" rel="noopener noreferrer" id="larkEmailTopBtn" class="topbar-email-btn" title="Open Lark Suite Business Email">
+          <i class="fas fa-envelope-open-text"></i>
+          <span>Business Email</span>
+          <i class="fas fa-external-link-alt" style="font-size:10px;opacity:0.75;"></i>
+        </a>
         <a href="../index.html" target="_blank" class="view-site-btn">
           <i class="fas fa-external-link-alt"></i>View Site
         </a>
@@ -119,6 +125,7 @@
             <span style="font-size:13px;font-weight:600;">Website Online</span>
           </div>
           <div class="status-group">
+            <a href="https://mail.larksuite.com/" target="_blank" rel="noopener noreferrer" id="larkEmailStatusBtn" class="btn btn-sm" style="background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe;font-weight:600;"><i class="fas fa-envelope-open-text" style="color:#2563eb;"></i> Business Email (Lark)</a>
             <a href="../index.html" target="_blank" class="btn btn-outline btn-sm"><i class="fas fa-eye"></i> Preview Site</a>
             <button class="btn btn-sm" style="background:#fff3cd;color:#92400e;border:1px solid #fde68a;" onclick="toggleMaintenance()">
               <i class="fas fa-tools"></i> Toggle Maintenance
@@ -186,6 +193,7 @@
               <div><h3>Quick Actions</h3><p>One-click controls</p></div>
             </div>
             <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+              <a href="https://mail.larksuite.com/" target="_blank" rel="noopener noreferrer" id="larkEmailQuickBtn" class="btn btn-outline" style="display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border-color:#bfdbfe;color:#1d4ed8;background:#eff6ff;font-weight:600;transition:all 0.2s;"><i class="fas fa-paper-plane" style="color:#2563eb;"></i> Open Business Email (Lark Suite) <i class="fas fa-external-link-alt" style="font-size:11px;opacity:0.7;"></i></a>
               <button class="btn btn-primary" onclick="navigate('team');setTimeout(()=>openTeamModal('add'),100)"><i class="fas fa-user-plus"></i> Add Team Member</button>
               <button class="btn btn-success" onclick="navigate('news');setTimeout(()=>openNewsModal('add'),100)"><i class="fas fa-plus"></i> Create News Post</button>
               <button class="btn btn-outline" onclick="navigate('programs');setTimeout(()=>openProgramModal('add'),100)"><i class="fas fa-hand-holding-medical"></i> Add Program</button>
@@ -291,6 +299,7 @@
           <div class="card-header">
             <div><h3>Contact Messages</h3><p id="msgUnreadCount">0 unread</p></div>
             <div style="display:flex;gap:8px;">
+              <a href="https://mail.larksuite.com/" target="_blank" rel="noopener noreferrer" id="larkEmailMsgBtn" class="btn btn-primary btn-sm"><i class="fas fa-envelope-open-text"></i> Business Email (Lark)</a>
               <button class="btn btn-outline btn-sm" onclick="markAllRead()"><i class="fas fa-check-double"></i> Mark All Read</button>
             </div>
           </div>
@@ -449,6 +458,7 @@
             <div class="form-group" style="margin-bottom:12px;"><label>Organization Full Name</label><input type="text" id="set_orgName" /></div>
             <div class="form-group" style="margin-bottom:12px;"><label>Abbreviation (e.g. SSNeP+)</label><input type="text" id="set_orgAbbr" /></div>
             <div class="form-group" style="margin-bottom:12px;"><label>Main Email</label><input type="email" id="set_email" /></div>
+            <div class="form-group" style="margin-bottom:12px;"><label><i class="fas fa-envelope-open-text" style="color:#1565C0;"></i> Business Email (Lark Suite) Portal URL</label><input type="url" id="set_larkEmailUrl" placeholder="https://mail.larksuite.com/" /></div>
             <div class="form-group" style="margin-bottom:12px;"><label>Phone Number</label><input type="text" id="set_phone" /></div>
             <div class="form-group" style="margin-bottom:12px;"><label>FAX Number</label><input type="text" id="set_fax" /></div>
             <div class="form-group"><label>Office Address</label><textarea id="set_address" rows="3"></textarea></div>

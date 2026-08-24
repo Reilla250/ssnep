@@ -25,6 +25,7 @@ const Store = {
     settings: {
       orgName:'South Sudan Network of People Living with HIV', orgAbbr:'SSNeP+',
       email:'info@ssneps.org',
+      larkEmailUrl:'https://mail.larksuite.com/',
       phone:'+211 925 222 012', fax:'+211 921 406 329',
       address:'Nimra Talata — Behind MCC building\nJuba, South Sudan',
       facebook:'#', twitter:'#',
@@ -216,6 +217,7 @@ function updateBadges() {
 //  DASHBOARD
 // ====================================================
 function renderDashboard() {
+  updateLarkEmailLinks();
   const team     = Store.get('team',[]);
   const news     = Store.get('news',[]);
   const programs = Store.get('programs',[]);
@@ -857,9 +859,19 @@ function saveTheme() {
 // ====================================================
 //  SETTINGS
 // ====================================================
-function renderSettings() {
+function updateLarkEmailLinks() {
   const s = Store.get('settings', Store.DEFAULTS.settings);
-  const fields = ['orgName','orgAbbr','email','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
+  const url = s.larkEmailUrl || 'https://mail.larksuite.com/';
+  ['larkEmailTopBtn', 'larkEmailNavBtn', 'larkEmailStatusBtn', 'larkEmailQuickBtn', 'larkEmailMsgBtn'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = url;
+  });
+}
+
+function renderSettings() {
+  updateLarkEmailLinks();
+  const s = Store.get('settings', Store.DEFAULTS.settings);
+  const fields = ['orgName','orgAbbr','email','larkEmailUrl','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
   fields.forEach(f => {
     const el = document.getElementById('set_'+f); if(el) el.value = s[f]||'';
   });
@@ -868,12 +880,13 @@ function renderSettings() {
 
 function saveSettings() {
   let s = Store.get('settings', Store.DEFAULTS.settings);
-  const fields = ['orgName','orgAbbr','email','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
+  const fields = ['orgName','orgAbbr','email','larkEmailUrl','phone','fax','address','facebook','twitter','adminUser','aboutP1','aboutP2'];
   fields.forEach(f => { const el = document.getElementById('set_'+f); if(el) s[f] = el.value.trim(); });
   const newPass = document.getElementById('set_adminPass').value;
   if (newPass) s.adminPass = newPass;
   s.maintenanceMode = document.getElementById('set_maintenanceMode').checked;
   Store.set('settings',s);
+  updateLarkEmailLinks();
   toast('Settings saved! Website updated.'); logActivity('Site settings saved','blue');
 }
 
