@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us | ssneps.org</title>
+  <title>About Us | South Sudan Network of PLHIV (SSNEP)</title>
   <meta name="description" content="Learn about SSNeP+, the national umbrella body representing People Living with HIV in South Sudan, registered with the Ministry of Legal Affairs." />
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
@@ -15,24 +17,24 @@
     <div class="container">
       <div class="top-bar-left">
         <div class="social-links">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.facebook.com/search/top/?q=SSNeP%2B" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
       <div class="top-bar-right">
         <div class="contact-info">
           <span><i class="fas fa-envelope icon"></i> <a href="mailto:info@ssneps.org">info@ssneps.org</a></span>
-          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012">+211925222012</a></span>
+          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012">+211 925 222 012</a></span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- HEADER -->
-  <header class="site-header">
+  <header class="site-header" id="strickymenu">
     <div class="header-inner">
       <a href="index.html" class="site-logo">
-        <img src="assets/images/logo.png" alt="South Sudan Network of PLHIV (SSNeP+)" class="site-logo-img" />
+        <img src="assets/images/logo.png" alt="SSNeP+ Logo" class="site-logo-img" />
       </a>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -46,8 +48,8 @@
           <ul class="dropdown-menu">
             <li><a href="portfolio.html">Event</a></li>
             <li><a href="portfolio.html">Photo Gallery</a></li>
-            <li><a href="#">Testimonial</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="about.html">Testimonial</a></li>
+            <li><a href="index.html#accordion">FAQ</a></li>
           </ul>
         </li>
         <li><a href="programs.html">Service</a></li>
@@ -55,121 +57,145 @@
         <li><a href="news.html">News</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="nav-search" aria-label="Search"><i class="fas fa-search"></i></button>
+      <div class="searchbar">
+        <div class="search-button"><i class="fas fa-search"></i></div>
+        <form action="#" onsubmit="openSearch();return false;">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for ..." id="headerSearchInput">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
   </header>
 
   <!-- PAGE BANNER -->
-  <div class="page-banner banner-about">
+  <div class="page-banner banner-about" style="background-image: url('assets/images/banner_about.jpg');">
     <div class="page-banner-overlay"></div>
     <div class="page-banner-content">
       <h1>About Us</h1>
     </div>
   </div>
 
-  <!-- ABOUT CONTENT -->
+  <!-- ABOUT CONTENT SECTION -->
   <section class="section">
     <div class="container">
-      <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap:40px; align-items:center; margin-bottom:50px;">
-        <div class="about-text">
-          <p data-cms="about-p1">
-            <strong>South Sudan Network of People Living with HIV (SSNeP+)</strong> is a national umbrella body that represents and coordinates the interests and activities of member associations and groups. SSNeP+ is an umbrella of State networks, member associations and support groups of <a href="#">PLHIV</a> in South Sudan. SSNeP+ is registered in South Sudan with Ministry of Legal Affairs, <a href="#">South Sudan Relief and Rehabilitation Commission (RRC)</a> and <a href="#">National NGO Forum (NNGO) Forum</a> as non-governmental organisation (NGO).
-          </p>
-          <p data-cms="about-p2">
-            SSNeP+ is fully committed to its vision of creating an environment in which PLHIV live longer, positively and productively. SSNeP+ subscribes to the three (3) 'zeros' of the <a href="#">Joint United Nations Joint Programme on HIV/AIDS (UNAIDS)</a>, namely; 'Zero New Infections', 'Zero AIDS-related Deaths' and 'Zero Discrimination', and ultimately works towards the attainment of these three (3) 'zeros' in South Sudan.
-          </p>
+      <div class="headline">
+        <h2>SOUTH SUDAN NETWORK OF PEOPLE LIVING WITH HIV</h2>
+        <h3>Coordination &bull; Advocacy &bull; Empowerment &bull; Peer Support</h3>
+      </div>
+
+      <div style="font-size:14px; line-height:1.9; color:var(--text-mid); max-width:900px; margin:0 auto 40px;">
+        <p style="margin-bottom:16px;">
+          <strong>South Sudan Network of People Living with HIV (SSNeP+)</strong> is a national umbrella body representing and coordinating the interests and activities of PLHIV member associations and groups across South Sudan. Registered as a non-governmental organization under the Ministry of Legal Affairs and the Relief and Rehabilitation Commission (RRC), SSNeP+ brings together state networks, community support groups, and healthcare advocates to ensure zero discrimination and equitable access to care.
+        </p>
+        <p style="margin-bottom:16px;">
+          SSNeP+ serves as a Sub-Sub Recipient (SSR) of Global Fund grants and maintains partnership agreements with UNFPA, Cordaid, UNDP, and USAID/AHEC. Through strategic community interventions, SSNeP+ advocates for the rights of PLHIV, distributes essential medical and nutritional supplies, and strengthens health service delivery across the 10 states of South Sudan.
+        </p>
+      </div>
+
+      <!-- THREE ZEROS -->
+      <div class="three-zeros" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-bottom:50px;">
+        <div class="zero-card" style="background:var(--off-white); padding:30px; border-radius:8px; border-top:4px solid var(--blue); text-align:center;">
+          <div style="font-size:36px; color:var(--blue); margin-bottom:12px;"><i class="fas fa-shield-virus"></i></div>
+          <h3 style="font-size:18px; font-weight:700; color:var(--text-dark); margin-bottom:8px;">Zero New Infections</h3>
+          <p style="font-size:13px; color:var(--text-mid);">Expanding access to targeted community-based testing, peer-led education, and preventive counseling for key and vulnerable populations.</p>
         </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
-          <img src="assets/images/why-choose-7.jpeg" alt="SSNeP Community" style="width:100%; height:160px; object-fit:cover; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
-          <img src="assets/images/why-choose-8.jpeg" alt="SSNeP Outreach" style="width:100%; height:160px; object-fit:cover; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
-          <img src="assets/images/why-choose-9.jpeg" alt="SSNeP Meeting" style="width:100%; height:160px; object-fit:cover; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
-          <img src="assets/images/home_booking_photo.jpg" alt="SSNeP Support" style="width:100%; height:160px; object-fit:cover; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);" />
+        <div class="zero-card" style="background:var(--off-white); padding:30px; border-radius:8px; border-top:4px solid var(--blue); text-align:center;">
+          <div style="font-size:36px; color:var(--blue); margin-bottom:12px;"><i class="fas fa-heartbeat"></i></div>
+          <h3 style="font-size:18px; font-weight:700; color:var(--text-dark); margin-bottom:8px;">Zero AIDS-Related Deaths</h3>
+          <p style="font-size:13px; color:var(--text-mid);">Ensuring 100% linkage to ART treatment, TB co-infection management, viral load tracking, and nutritional support for PLHIV households.</p>
+        </div>
+        <div class="zero-card" style="background:var(--off-white); padding:30px; border-radius:8px; border-top:4px solid var(--blue); text-align:center;">
+          <div style="font-size:36px; color:var(--blue); margin-bottom:12px;"><i class="fas fa-hands-helping"></i></div>
+          <h3 style="font-size:18px; font-weight:700; color:var(--text-dark); margin-bottom:8px;">Zero Discrimination</h3>
+          <p style="font-size:13px; color:var(--text-mid);">Combating stigma in healthcare facilities, promoting gender equality, human rights, and enforcing child protection safeguards nationwide.</p>
         </div>
       </div>
 
-      <!-- Three Zeros -->
-      <div class="three-zeros">
-        <div class="zero-card">
-          <div class="zero-icon">🚫</div>
-          <h3>Zero New Infections</h3>
-          <p>Working tirelessly to prevent new HIV infections across South Sudan through education, testing, and community outreach programs.</p>
-        </div>
-        <div class="zero-card">
-          <div class="zero-icon">💊</div>
-          <h3>Zero AIDS-related Deaths</h3>
-          <p>Ensuring all PLHIV have access to life-saving antiretroviral treatment and comprehensive care services throughout the country.</p>
-        </div>
-        <div class="zero-card">
-          <div class="zero-icon">🤝</div>
-          <h3>Zero Discrimination</h3>
-          <p>Eliminating stigma and discrimination against PLHIV in healthcare facilities, workplaces, and communities across South Sudan.</p>
-        </div>
+      <!-- PHOTO GALLERY GRID -->
+      <div class="headline">
+        <h2>COMMUNITY ACTIVITIES</h2>
+        <h3>Photographs from our community outreach across South Sudan</h3>
       </div>
+      <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+        <img src="assets/images/why-choose-7.jpeg" alt="Activity" style="width:100%; height:180px; object-fit:cover; border-radius:6px; box-shadow:var(--shadow);" />
+        <img src="assets/images/why-choose-8.jpeg" alt="Activity" style="width:100%; height:180px; object-fit:cover; border-radius:6px; box-shadow:var(--shadow);" />
+        <img src="assets/images/why-choose-9.jpeg" alt="Activity" style="width:100%; height:180px; object-fit:cover; border-radius:6px; box-shadow:var(--shadow);" />
+        <img src="assets/images/home_booking_photo.jpg" alt="Activity" style="width:100%; height:180px; object-fit:cover; border-radius:6px; box-shadow:var(--shadow);" />
+      </div>
+
     </div>
   </section>
 
   <!-- CTA BANNER -->
-  <div class="cta-banner">
+  <div class="cta-banner" style="background-image: url('assets/images/cta_background.jpg');">
     <div class="cta-banner-overlay"></div>
     <div class="container">
       <p>Join SSNEP community and support our mission to supporting PLHIV</p>
-      <a href="contact.html" class="btn-cta">Read More ❯</a>
+      <a href="contact.html" class="btn-cta">Contact Us <i class="fas fa-chevron-circle-right"></i></a>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>About SSNeP+</h4>
-          <p>SSNeP+ is a national umbrella body representing and coordinating the interests and activities of PLHIV member associations and groups across South Sudan.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="programs.html">Service</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
+      <div class="footer-grid" style="grid-template-columns: repeat(4, 1fr); gap:30px;">
         <div class="footer-col">
           <h4>Newsletter</h4>
           <p style="font-size:13px;margin-bottom:12px;">You can keep up with our weekly news/press release by subscribing here.</p>
-          <form class="newsletter-form" onsubmit="alert('Thank you!');this.reset();return false;">
-            <input type="email" placeholder="Your email address" required />
-            <button type="submit">Go</button>
+          <form class="newsletter-form">
+            <div class="input-group" style="display:flex;">
+              <input type="email" placeholder="Email Address" style="padding:8px 12px; font-size:13px; border:1px solid #444; background:#333; color:white; width:100%; outline:none;" required />
+              <button type="submit" style="background:var(--blue); color:white; border:none; padding:8px 14px; cursor:pointer;"><i class="fas fa-location-arrow"></i></button>
+            </div>
           </form>
+        </div>
+        <div class="footer-col">
+          <h4>Recent Posts</h4>
+          <ul style="font-size:13px; line-height:1.8;">
+            <li><a href="news.html">Optimization of targeted provider HIV testing</a></li>
+            <li><a href="news.html">Malaria Insecticide Treated Nets Distribution</a></li>
+            <li><a href="news.html">HIV/AIDS Awareness Programme in Juba</a></li>
+            <li><a href="news.html">Quarterly Board Meeting Governance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Projects</h4>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px;">
+            <img src="assets/images/portfolio-6.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-5.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-4.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-3.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-2.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-1.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+          </div>
         </div>
         <div class="footer-col footer-address">
           <h4>Address</h4>
-          <p><strong>Nimra Talata</strong> — Behind MCC building<br>Juba, South Sudan</p>
-          <p><strong>Phone:</strong> +211 925 222 012</p>
-          <p><strong>FAX:</strong> +211 921 406 329</p>
-          <p><a href="mailto:info@ssneps.org" style="color:rgba(255,255,255,0.75);">info@ssneps.org</a></p>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--blue); margin-right:6px;"></i>Nimra Talata — Behind MCC building<br>Juba — South Sudan</p>
+          <p><i class="fas fa-phone" style="color:var(--blue); margin-right:6px;"></i>Phone: +211 925 222 012</p>
+          <p><i class="fas fa-fax" style="color:var(--blue); margin-right:6px;"></i>FAX: +211 921 406 329</p>
+          <p><i class="fas fa-envelope" style="color:var(--blue); margin-right:6px;"></i><a href="mailto:info@ssneps.org" style="color:white;">info@ssneps.org</a></p>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>Copyright &copy; 2024 ssneps.org. All Rights Reserved.</p>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="#">Terms and Conditions</a>
-          <a href="#">Privacy Policy</a><a href="admin/login.html"><i class="fas fa-lock" style="font-size:11px;margin-right:3px;"></i>Admin</a>
+    <div class="footer-bottom" style="margin-top:40px; border-top:1px solid #333; padding-top:20px;">
+      <div class="container" style="text-align:center; font-size:13px; color:#888;">
+        <p>Copyright © 2024, SSNEP. All Rights Reserved.</p>
+        <div style="margin-top:6px; display:flex; justify-content:center; gap:16px;">
+          <a href="index.html" style="color:#aaa;">Home</a>
+          <a href="#" style="color:#aaa;">Terms and Conditions</a>
+          <a href="#" style="color:#aaa;">Privacy Policy</a>
+          <a href="admin/login.html" style="color:#aaa;"><i class="fas fa-lock" style="font-size:11px;margin-right:3px;"></i>Admin</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/cms.js"></script><script src="js/main.js"></script>
+  <script src="js/cms.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

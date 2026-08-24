@@ -29,7 +29,7 @@ const Store = {
       phone:'+211 925 222 012', fax:'+211 921 406 329',
       address:'Nimra Talata — Behind MCC building\nJuba, South Sudan',
       facebook:'#', twitter:'#',
-      primaryColor:'#1565C0',
+      primaryColor:'#286DC1',
       heroTitle:'We Work to Improve Lives of PLHIV in South Sudan',
       heroSubtitle:'SSNeP+ is a national umbrella organization that brings together various state networks, associations, and support groups of PLHIV across South Sudan.',
       heroBtnText:'Read More',

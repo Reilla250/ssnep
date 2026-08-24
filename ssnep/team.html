@@ -3,22 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Our Team | ssneps.org</title>
-  <meta name="description" content="Meet the dedicated team of South Sudan Network of People Living with HIV (SSNeP+) who work to improve the lives of PLHIV." />
+  <title>Our Team | South Sudan Network of PLHIV (SSNEP)</title>
+  <meta name="description" content="Meet the leadership and program team at SSNeP+ driving HIV prevention, treatment linkage, and advocacy in South Sudan." />
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <style>
-    /* Team-specific avatar colors */
-    .av-1 { background: linear-gradient(135deg, #37474F, #263238); }
-    .av-2 { background: linear-gradient(135deg, #1565C0, #0D47A1); }
-    .av-3 { background: linear-gradient(135deg, #2E7D32, #1B5E20); }
-    .av-4 { background: linear-gradient(135deg, #4A148C, #311B92); }
-    .av-5 { background: linear-gradient(135deg, #B71C1C, #7F0000); }
-    .av-6 { background: linear-gradient(135deg, #E65100, #BF360C); }
-    .av-7 { background: linear-gradient(135deg, #00695C, #004D40); }
-    .av-8 { background: linear-gradient(135deg, #283593, #1A237E); }
-    .av-9 { background: linear-gradient(135deg, #558B2F, #33691E); }
-  </style>
 </head>
 <body>
 
@@ -27,24 +17,24 @@
     <div class="container">
       <div class="top-bar-left">
         <div class="social-links">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.facebook.com/search/top/?q=SSNeP%2B" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
       <div class="top-bar-right">
         <div class="contact-info">
           <span><i class="fas fa-envelope icon"></i> <a href="mailto:info@ssneps.org">info@ssneps.org</a></span>
-          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012">+211925222012</a></span>
+          <span><i class="fas fa-phone icon"></i> <a href="tel:+211925222012">+211 925 222 012</a></span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- HEADER -->
-  <header class="site-header">
+  <header class="site-header" id="strickymenu">
     <div class="header-inner">
       <a href="index.html" class="site-logo">
-        <img src="assets/images/logo.png" alt="South Sudan Network of PLHIV (SSNeP+)" class="site-logo-img" />
+        <img src="assets/images/logo.png" alt="SSNeP+ Logo" class="site-logo-img" />
       </a>
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
@@ -58,8 +48,8 @@
           <ul class="dropdown-menu">
             <li><a href="portfolio.html">Event</a></li>
             <li><a href="portfolio.html">Photo Gallery</a></li>
-            <li><a href="#">Testimonial</a></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a href="about.html">Testimonial</a></li>
+            <li><a href="index.html#accordion">FAQ</a></li>
           </ul>
         </li>
         <li><a href="programs.html">Service</a></li>
@@ -67,233 +57,230 @@
         <li><a href="news.html">News</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
-      <button class="nav-search" aria-label="Search"><i class="fas fa-search"></i></button>
+      <div class="searchbar">
+        <div class="search-button"><i class="fas fa-search"></i></div>
+        <form action="#" onsubmit="openSearch();return false;">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for ..." id="headerSearchInput">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="submit"><i class="fas fa-search"></i></button>
+            </span>
+          </div>
+        </form>
+      </div>
     </div>
   </header>
 
   <!-- PAGE BANNER -->
-  <div class="page-banner banner-team">
+  <div class="page-banner banner-team" style="background-image: url('assets/images/banner_team.jpg');">
     <div class="page-banner-overlay"></div>
     <div class="page-banner-content">
-      <h1>OUR TEAM - SOUTH SUDAN NETWORK OF PLHIV (SSNeP+)</h1>
+      <h1>Our Team</h1>
     </div>
   </div>
 
-  <!-- TEAM -->
+  <!-- TEAM SECTION -->
   <section class="section">
     <div class="container">
-      <div class="team-grid" id="cms-team-grid">
+      <div class="headline">
+        <h2>OUR TEAM MEMBERS</h2>
+        <h3>All our skilled team members are listed below</h3>
+      </div>
 
-        <!-- Alice Okuo Amadra -->
+      <div class="team-grid" id="cms-team-grid" style="grid-template-columns: repeat(4, 1fr);">
+
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-1.jpeg" alt="Alice Okuo Amadra" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Alice Okuo Amadra</h3></div>
-          <div class="team-card-role">Program Officer</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-1.jpeg" alt="Alice Okuo Amadra" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Alice Okuo Amadra</h3>
+            <p>Program Officer</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Lole Laila Lole -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-2.jpeg" alt="Lole Laila Lole" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Lole Laila Lole</h3></div>
-          <div class="team-card-role">Executive Director</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-2.jpeg" alt="Lole Laila Lole" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Lole Laila Lole</h3>
+            <p>Executive Director</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Samuel Bullen -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-3.jpeg" alt="Samuel Bullen" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Samuel Bullen</h3></div>
-          <div class="team-card-role">Finance Administrator</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-3.jpeg" alt="Samuel Bullen" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Samuel Bullen</h3>
+            <p>Finance Administrator</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Wani Isaac -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-4.jpeg" alt="Wani Isaac" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Wani Isaac</h3></div>
-          <div class="team-card-role">Clinical Project Officer</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-4.jpeg" alt="Wani Isaac" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Wani Isaac</h3>
+            <p>Clinical Project Officer</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Kiden Sarah -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-5.jpeg" alt="Kiden Sarah" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Kiden Sarah</h3></div>
-          <div class="team-card-role">Finance Assistant</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-5.jpeg" alt="Kiden Sarah" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Kiden Sarah</h3>
+            <p>Finance Assistant</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Koma Williams -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-7.jpeg" alt="Koma Williams" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Koma Williams</h3></div>
-          <div class="team-card-role">Clinical Project Nurse</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-7.jpeg" alt="Koma Williams" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Koma Williams</h3>
+            <p>Clinical Project Nurse</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Poni Rose -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-9.jpeg" alt="Poni Rose" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Poni Rose</h3></div>
-          <div class="team-card-role">HIV Advocacy and Prevention Officer</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-9.jpeg" alt="Poni Rose" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Poni Rose</h3>
+            <p>HIV Advocacy &amp; Prev Officer</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Obulejo Jackson -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-18.png" alt="Obulejo Jackson" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Obulejo Jackson</h3></div>
-          <div class="team-card-role">M&amp;E Officer</div>
-          <div class="team-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          <img src="assets/images/team-member-18.png" alt="Obulejo Jackson" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Obulejo Jackson</h3>
+            <p>M&amp;E Officer</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Likambo Moses John -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-19.jpeg" alt="Likambo Moses John" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Likambo Moses John</h3></div>
-          <div class="team-card-role">Social Behaviour Change Communication (SBCC) Officer</div>
-          <div class="team-social">
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <img src="assets/images/team-member-19.jpeg" alt="Likambo Moses John" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Likambo Moses John</h3>
+            <p>SBCC Officer</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
           </div>
         </div>
 
-        <!-- Joseph Oniku Karlino -->
         <div class="team-card">
-          <div class="team-photo-placeholder" style="overflow:hidden;position:relative;">
-            <img src="assets/images/team-member-22.jpeg" alt="Joseph Oniku Karlino" style="width:100%;height:100%;object-fit:cover;object-position:top;" />
-          </div>
-          <div class="team-info"><h3>Joseph Oniku Karlino</h3></div>
-          <div class="team-card-role">Social Behaviour Change Communication (SBCC) Officer</div>
-          <div class="team-social">
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <img src="assets/images/team-member-22.jpeg" alt="Joseph Oniku Karlino" class="team-card-img" />
+          <div class="team-card-body">
+            <h3>Joseph Oniku Karlino</h3>
+            <p>SBCC Officer</p>
+            <div style="margin-top:10px; display:flex; gap:10px; justify-content:center; font-size:13px; color:var(--blue);">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
           </div>
         </div>
 
-      </div><!-- /team-grid -->
+      </div>
     </div>
   </section>
 
   <!-- CTA BANNER -->
-  <div class="cta-banner">
+  <div class="cta-banner" style="background-image: url('assets/images/cta_background.jpg');">
     <div class="cta-banner-overlay"></div>
     <div class="container">
       <p>Join SSNEP community and support our mission to supporting PLHIV</p>
-      <a href="contact.html" class="btn-cta">Read More ❯</a>
+      <a href="contact.html" class="btn-cta">Contact Us <i class="fas fa-chevron-circle-right"></i></a>
     </div>
   </div>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>About SSNeP+</h4>
-          <p>SSNeP+ is a national umbrella body representing and coordinating the interests and activities of PLHIV member associations and groups across South Sudan.</p>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="programs.html">Service</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="news.html">News</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
+      <div class="footer-grid" style="grid-template-columns: repeat(4, 1fr); gap:30px;">
         <div class="footer-col">
           <h4>Newsletter</h4>
           <p style="font-size:13px;margin-bottom:12px;">You can keep up with our weekly news/press release by subscribing here.</p>
-          <form class="newsletter-form" onsubmit="alert('Thank you!');this.reset();return false;">
-            <input type="email" placeholder="Your email address" required />
-            <button type="submit">Go</button>
+          <form class="newsletter-form">
+            <div class="input-group" style="display:flex;">
+              <input type="email" placeholder="Email Address" style="padding:8px 12px; font-size:13px; border:1px solid #444; background:#333; color:white; width:100%; outline:none;" required />
+              <button type="submit" style="background:var(--blue); color:white; border:none; padding:8px 14px; cursor:pointer;"><i class="fas fa-location-arrow"></i></button>
+            </div>
           </form>
+        </div>
+        <div class="footer-col">
+          <h4>Recent Posts</h4>
+          <ul style="font-size:13px; line-height:1.8;">
+            <li><a href="news.html">Optimization of targeted provider HIV testing</a></li>
+            <li><a href="news.html">Malaria Insecticide Treated Nets Distribution</a></li>
+            <li><a href="news.html">HIV/AIDS Awareness Programme in Juba</a></li>
+            <li><a href="news.html">Quarterly Board Meeting Governance</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Projects</h4>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:6px;">
+            <img src="assets/images/portfolio-6.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-5.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-4.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-3.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-2.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+            <img src="assets/images/portfolio-1.jpeg" alt="Project" style="width:100%; height:55px; object-fit:cover; border-radius:3px;" />
+          </div>
         </div>
         <div class="footer-col footer-address">
           <h4>Address</h4>
-          <p><strong>Nimra Talata</strong> — Behind MCC building<br>Juba, South Sudan</p>
-          <p><strong>Phone:</strong> +211 925 222 012</p>
-          <p><strong>FAX:</strong> +211 921 406 329</p>
-          <p><a href="mailto:info@ssneps.org" style="color:rgba(255,255,255,0.75);">info@ssneps.org</a></p>
+          <p><i class="fas fa-map-marker-alt" style="color:var(--blue); margin-right:6px;"></i>Nimra Talata — Behind MCC building<br>Juba — South Sudan</p>
+          <p><i class="fas fa-phone" style="color:var(--blue); margin-right:6px;"></i>Phone: +211 925 222 012</p>
+          <p><i class="fas fa-fax" style="color:var(--blue); margin-right:6px;"></i>FAX: +211 921 406 329</p>
+          <p><i class="fas fa-envelope" style="color:var(--blue); margin-right:6px;"></i><a href="mailto:info@ssneps.org" style="color:white;">info@ssneps.org</a></p>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>Copyright &copy; 2024 ssneps.org. All Rights Reserved.</p>
-        <div class="footer-links">
-          <a href="index.html">Home</a>
-          <a href="#">Terms and Conditions</a>
-          <a href="#">Privacy Policy</a><a href="admin/login.html"><i class="fas fa-lock" style="font-size:11px;margin-right:3px;"></i>Admin</a>
+    <div class="footer-bottom" style="margin-top:40px; border-top:1px solid #333; padding-top:20px;">
+      <div class="container" style="text-align:center; font-size:13px; color:#888;">
+        <p>Copyright © 2024, SSNEP. All Rights Reserved.</p>
+        <div style="margin-top:6px; display:flex; justify-content:center; gap:16px;">
+          <a href="index.html" style="color:#aaa;">Home</a>
+          <a href="#" style="color:#aaa;">Terms and Conditions</a>
+          <a href="#" style="color:#aaa;">Privacy Policy</a>
+          <a href="admin/login.html" style="color:#aaa;"><i class="fas fa-lock" style="font-size:11px;margin-right:3px;"></i>Admin</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/cms.js"></script><script src="js/main.js"></script>
+  <script src="js/cms.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -384,8 +384,58 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // --- Search dropdown toggle in header ---
+  document.querySelectorAll('.search-button').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var form = this.nextElementSibling || document.querySelector('.searchbar form');
+      if (form) form.classList.toggle('active');
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    var searchForm = document.querySelector('.searchbar form');
+    if (searchForm && !searchForm.contains(e.target) && !e.target.closest('.search-button')) {
+      searchForm.classList.remove('active');
+    }
+  });
+
+  // --- FAQ Accordion ---
+  document.querySelectorAll('.faq-button').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var faqItem = this.closest('.faq-item');
+      var faqBody = faqItem ? faqItem.querySelector('.faq-body') : null;
+      var isOpen = faqBody && faqBody.classList.contains('open');
+
+      // Close all other FAQs
+      document.querySelectorAll('.faq-body').forEach(function(b) { b.classList.remove('open'); });
+      document.querySelectorAll('.faq-button').forEach(function(b) { b.classList.add('collapsed'); });
+
+      if (!isOpen && faqBody) {
+        faqBody.classList.add('open');
+        this.classList.remove('collapsed');
+      }
+    });
+  });
+
+  // --- Video Modal ---
+  document.querySelectorAll('[data-target="#myModal"], .video-button').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var vModal = document.getElementById('myModal');
+      if (vModal) vModal.style.display = 'block';
+    });
+  });
+
+  document.querySelectorAll('#myModal [data-dismiss="modal"]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var vModal = document.getElementById('myModal');
+      if (vModal) vModal.style.display = 'none';
+    });
+  });
+
   // --- Scroll reveal ---
-  var revealEls = document.querySelectorAll('.program-card, .team-card, .zero-card, .portfolio-item, .news-item');
+  var revealEls = document.querySelectorAll('.program-card, .team-card, .zero-card, .portfolio-item, .news-item, .choose-item, .feature-item');
   if ('IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
