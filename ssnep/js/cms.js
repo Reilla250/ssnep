@@ -107,13 +107,19 @@ const CMS = {
   },
 
   // ---- TEAM ----
+  // ---- TEAM ----
   renderTeam() {
     const container = document.getElementById('cms-team-grid');
     if (!container) return;
     const team = this.get('team', []);
     container.innerHTML = team.map(m => `
       <div class="team-card">
-        <div class="team-photo-placeholder" style="background:linear-gradient(135deg,${m.color||'#1565C0'},${m.color||'#0D47A1'}dd);">${m.initials||'?'}</div>
+        <div class="team-photo-placeholder" style="background:linear-gradient(135deg,${m.color||'#1565C0'},${m.color||'#0D47A1'}dd);overflow:hidden;position:relative;">
+          ${m.photoUrl
+            ? `<img src="${m.photoUrl}" alt="${this.esc(m.name)}" style="width:100%;height:100%;object-fit:cover;object-position:top;">`
+            : (m.initials||'?')
+          }
+        </div>
         <div class="team-info"><h3>${this.esc(m.name)}</h3></div>
         <div class="team-card-role">${this.esc(m.role)}</div>
         <div class="team-social">
@@ -141,8 +147,11 @@ const CMS = {
     if (!container) return;
     const programs = this.get('programs', []).filter(p => p.status === 'active').slice(0, limit);
     container.innerHTML = programs.map(p => `
-      <div class="program-card">
-        <div class="program-card-img-placeholder">${p.icon||'📌'}</div>
+      <div class="program-card" style="overflow:hidden;border-radius:12px;">
+        ${p.imageUrl
+          ? `<div class="program-card-img-wrap" style="height:190px;overflow:hidden;"><img src="${p.imageUrl}" alt="${this.esc(p.title)}" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease;"></div>`
+          : `<div class="program-card-img-placeholder">${p.icon||'📌'}</div>`
+        }
         <div class="program-card-body">
           <h3>${this.esc(p.title)}</h3>
           <p>${this.esc(p.description||'')}</p>
@@ -181,7 +190,12 @@ const CMS = {
     const fmtDate = d => d ? new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) : '';
     container.innerHTML = news.map(n => `
       <div class="news-item">
-        <div class="news-item-img" style="background:linear-gradient(135deg,#1565C0,#0D47A1);display:flex;align-items:center;justify-content:center;color:white;font-size:28px;">📰</div>
+        <div class="news-item-img" style="background:linear-gradient(135deg,#1565C0,#0D47A1);display:flex;align-items:center;justify-content:center;color:white;font-size:28px;overflow:hidden;">
+          ${n.imageUrl
+            ? `<img src="${n.imageUrl}" alt="${this.esc(n.title)}" style="width:100%;height:100%;object-fit:cover;">`
+            : '📰'
+          }
+        </div>
         <div class="news-item-body">
           <h3><a href="#">${this.esc(n.title)}</a></h3>
           <div class="news-meta">

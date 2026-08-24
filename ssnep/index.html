@@ -75,12 +75,12 @@
   <!-- MISSION STRIP -->
   <div class="mission-strip">
     <div class="mission-content">
-      <p class="label">We Are On Mission</p>
-      <h2>Changing Lives<br>for Good</h2>
-      <p>SSNeP+ coordinates the interests and activities of member associations and support groups of People Living with HIV/AIDS throughout South Sudan, working towards Zero New Infections, Zero AIDS-related Deaths, and Zero Discrimination.</p>
+      <p class="label" data-cms="mission-label">We Are On Mission</p>
+      <h2 data-cms="mission-title">Changing Lives<br>for Good</h2>
+      <p data-cms="mission-text">SSNeP+ coordinates the interests and activities of member associations and support groups of People Living with HIV/AIDS throughout South Sudan, working towards Zero New Infections, Zero AIDS-related Deaths, and Zero Discrimination.</p>
       <a href="about.html" class="btn-primary" style="width:fit-content;">Learn More</a>
     </div>
-    <div class="mission-image"></div>
+    <div class="mission-image" style="background: url('assets/images/why-choose-1.jpeg') center/cover no-repeat; min-height:300px;"></div>
   </div>
 
   <!-- PROGRAMS SECTION -->
@@ -88,10 +88,10 @@
     <div class="container">
       <p class="section-title">What We Do</p>
       <h2 class="section-heading">Our Programs</h2>
-      <div class="cards-grid">
+      <div class="cards-grid" data-cms="home-programs" id="cms-programs-grid">
 
         <div class="program-card">
-          <img src="assets/images/malaria.png" alt="Malaria Programs" class="program-card-img" />
+          <img src="assets/images/service-1.png" alt="Malaria Programs" class="program-card-img" />
           <div class="program-card-body">
             <h3>Malaria Programs</h3>
             <p>Malaria is a serious threat in South Sudan, but SSNEP+ is working hard to change that. We focus on prevention, quick diagnosis, and proper treatment.</p>
@@ -100,7 +100,7 @@
         </div>
 
         <div class="program-card">
-          <img src="assets/images/hiv-awareness.png" alt="HIV/AIDS Awareness" class="program-card-img" />
+          <img src="assets/images/service-2.jpeg" alt="HIV/AIDS Awareness" class="program-card-img" />
           <div class="program-card-body">
             <h3>HIV/AIDS Awareness</h3>
             <p>Many of us know someone affected by HIV/AIDS. This preventable disease can have a devastating impact, but with awareness and access to resources, we can make a difference.</p>
@@ -109,7 +109,7 @@
         </div>
 
         <div class="program-card">
-          <div class="program-card-img-placeholder">🩺</div>
+          <img src="assets/images/service-3.jpg" alt="Tuberculosis" class="program-card-img" />
           <div class="program-card-body">
             <h3>Tuberculosis</h3>
             <p>South Sudan faces significant challenges tackling HIV and Tuberculosis. SSNeP+ plays a crucial role in addressing this dual burden through its impactful two-pronged approach.</p>
@@ -118,7 +118,7 @@
         </div>
 
         <div class="program-card">
-          <div class="program-card-img-placeholder">📊</div>
+          <img src="assets/images/service-5.jpg" alt="Monitoring &amp; Evaluation" class="program-card-img" />
           <div class="program-card-body">
             <h3>Monitoring &amp; Evaluation</h3>
             <p>SSNeP+ has developed key quality assurance mechanisms contributing to high-quality community-based HIV prevention, treatment, care, and retention services.</p>
@@ -127,7 +127,7 @@
         </div>
 
         <div class="program-card">
-          <div class="program-card-img-placeholder">📋</div>
+          <img src="assets/images/service-6.jpg" alt="Reporting" class="program-card-img" />
           <div class="program-card-body">
             <h3>Reporting</h3>
             <p>SSNeP uses different reporting approaches with key consideration on donor requirements, National Strategic Plan, SOPs, procedures, indicators and targets.</p>
@@ -136,7 +136,7 @@
         </div>
 
         <div class="program-card">
-          <div class="program-card-img-placeholder">🤝</div>
+          <img src="assets/images/service-19.jpg" alt="Stigma &amp; Discrimination" class="program-card-img" />
           <div class="program-card-body">
             <h3>Stigma &amp; Discrimination</h3>
             <p>"Silence can be damaging" — Accelerating support to eliminate health facility-based multiple layers of stigma and discrimination that impact PLHIV in Juba County.</p>
@@ -156,6 +156,24 @@
       <a href="about.html" class="btn-cta">Read More ❯</a>
     </div>
   </div>
+
+  <!-- PARTNERS & CLIENTS SECTION -->
+  <section class="section" style="background: #ffffff; padding: 45px 0;">
+    <div class="container">
+      <p class="section-title" style="text-align:center;">Our Partners</p>
+      <h3 class="section-heading" style="text-align:center; font-size:22px; margin-bottom:30px;">Organizations We Work With</h3>
+      <div style="display:flex; flex-wrap:wrap; gap:30px; justify-content:center; align-items:center;">
+        <img src="assets/images/client-1.jpeg" alt="Partner 1" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+        <img src="assets/images/client-2.png" alt="Partner 2" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+        <img src="assets/images/client-3.jpeg" alt="Partner 3" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+        <img src="assets/images/client-4.jpeg" alt="Partner 4" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+        <img src="assets/images/client-5.jpeg" alt="Partner 5" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+        <img src="assets/images/client-6.jpeg" alt="Partner 6" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+        <img src="assets/images/client-7.png" alt="Partner 7" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+        <img src="assets/images/client-8.png" alt="Partner 8" style="max-height:55px; opacity:0.85; filter:grayscale(30%); transition:all 0.3s;" onmouseover="this.style.opacity=1;this.style.filter='none';" onmouseout="this.style.opacity=0.85;this.style.filter='grayscale(30%)';" />
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="site-footer">
