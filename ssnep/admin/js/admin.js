@@ -24,7 +24,7 @@ const Store = {
   DEFAULTS: {
     settings: {
       orgName:'South Sudan Network of People Living with HIV', orgAbbr:'SSNeP+',
-      email:'info@ssnep.org', ethicsEmail:'ethics@ssnep.org',
+      email:'info@ssneps.org', ethicsEmail:'ethics@ssnep.org',
       phone:'+211 925 222 012', fax:'+211 921 406 329',
       address:'Nimra Talata — Behind MCC building\nJuba, South Sudan',
       facebook:'#', twitter:'#',
