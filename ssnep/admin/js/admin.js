@@ -25,7 +25,7 @@ const Store = {
     settings: {
       orgName:'South Sudan Network of People Living with HIV', orgAbbr:'SSNeP+',
       email:'info@ssneps.org',
-      larkEmailUrl:'https://mail.larksuite.com/',
+      larkEmailUrl:'https://www.larksuite.com/',
       phone:'+211 925 222 012', fax:'+211 921 406 329',
       address:'Nimra Talata — Behind MCC building\nJuba, South Sudan',
       facebook:'#', twitter:'#',
@@ -861,7 +861,7 @@ function saveTheme() {
 // ====================================================
 function updateLarkEmailLinks() {
   const s = Store.get('settings', Store.DEFAULTS.settings);
-  const url = s.larkEmailUrl || 'https://mail.larksuite.com/';
+  const url = s.larkEmailUrl || 'https://www.larksuite.com/';
   ['larkEmailTopBtn', 'larkEmailNavBtn', 'larkEmailStatusBtn', 'larkEmailQuickBtn', 'larkEmailMsgBtn'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.href = url;
