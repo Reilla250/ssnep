@@ -226,32 +226,7 @@ function buildArticleModal() {
 }
 
 function openArticle(id) {
-  buildArticleModal();
-  var allNews = getAllNews();
-  var item = null;
-  if (id) {
-    item = allNews.find(function(n){ return String(n.id) === String(id); });
-  }
-  if (!item) item = allNews[0];
-  if (!item) return;
-
-  document.getElementById('artCat').textContent    = item.category || 'News';
-  document.getElementById('artTitle').textContent  = item.title;
-  document.getElementById('artDate').textContent   = fmtDate(item.date);
-  document.getElementById('artAuthor').textContent = item.author || 'SSNeP+ Team';
-  document.getElementById('artModalHeader').textContent = item.category || 'News & Update';
-
-  var contentEl = document.getElementById('artContent');
-  if (item.content && item.content.trim().charAt(0) === '<') {
-    contentEl.innerHTML = item.content;
-  } else if (item.content) {
-    contentEl.innerHTML = '<p>' + esc(item.content) + '</p>';
-  } else {
-    contentEl.innerHTML = '<p>' + esc(item.excerpt || item.title) + '</p>';
-  }
-
-  document.getElementById('ssnepArticleOverlay').classList.add('active');
-  document.getElementById('ssnepArticleOverlay').scrollTop = 0;
+  window.location.href = 'news-detail-' + (id || '1') + '.html';
 }
 
 function closeArticle() {

@@ -229,8 +229,9 @@ const CMS = {
     };
     const fmtDate = d => d ? new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) : '';
     container.innerHTML = news.map((n, i) => {
-      const src = n.imageUrl || defaultNewsImgs[n.id] || defaultNewsImgs[i+1] || 'assets/images/news-9.jpg';
-      const detailLink = `news-detail-${n.id||1}.html`;
+      const idNum = n.id || (i + 1);
+      const src = n.imageUrl || defaultNewsImgs[idNum] || 'assets/images/news-9.jpg';
+      const detailLink = `news-detail-${idNum}.html`;
       return `
         <div class="news-card-item" style="display:flex; flex-direction:column; gap:16px; margin-bottom:40px; background:#fff; border:1px solid var(--border); border-radius:6px; overflow:hidden;">
           <a href="${detailLink}">
