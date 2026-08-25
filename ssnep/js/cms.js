@@ -107,31 +107,36 @@ const CMS = {
   },
 
   // ---- TEAM ----
-  // ---- TEAM ----
   renderTeam() {
     const container = document.getElementById('cms-team-grid');
     if (!container) return;
     const team = this.get('team', []);
+    // Only replace static HTML if admin has actually saved custom team members
+    if (!team || team.length === 0) return;
     container.innerHTML = team.map(m => `
-      <div class="team-card">
-        <div class="team-photo-placeholder" style="background:linear-gradient(135deg,${m.color||'#1565C0'},${m.color||'#0D47A1'}dd);overflow:hidden;position:relative;">
+      <div class="team-item">
+        <div style="overflow:hidden;position:relative;height:240px;background:linear-gradient(135deg,${m.color||'#1565C0'},${m.color||'#0D47A1'}dd);">
           ${m.photoUrl
-            ? `<img src="${m.photoUrl}" alt="${this.esc(m.name)}" style="width:100%;height:100%;object-fit:cover;object-position:top;">`
-            : (m.initials||'?')
+            ? `<img src="${m.photoUrl}" alt="${this.esc(m.name)}" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">`
+            : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:700;color:white;">${m.initials||'?'}</div>`
           }
         </div>
-        <div class="team-info"><h3>${this.esc(m.name)}</h3></div>
-        <div class="team-card-role">${this.esc(m.role)}</div>
-        <div class="team-social">
-          ${m.facebook?`<a href="${m.facebook}" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>`:''}
-          ${m.twitter?`<a href="${m.twitter}" aria-label="Twitter"><i class="fab fa-twitter"></i></a>`:''}
-          ${m.linkedin?`<a href="${m.linkedin}" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>`:''}
-          ${m.email?`<a href="mailto:${m.email}" aria-label="Email"><i class="fas fa-envelope"></i></a>`:''}
-          ${(!m.facebook&&!m.twitter&&!m.linkedin&&!m.email)?`
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fas fa-envelope"></i></a>`:''}
+        <div class="team-text">
+          <a href="team.html">${this.esc(m.name)}</a>
+          <p>${this.esc(m.role)}</p>
+        </div>
+        <div class="team-social-bar">
+          <ul>
+            ${m.facebook?`<li><a href="${m.facebook}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>`:''}
+            ${m.twitter?`<li><a href="${m.twitter}" target="_blank"><i class="fab fa-twitter"></i></a></li>`:''}
+            ${m.linkedin?`<li><a href="${m.linkedin}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>`:''}
+            ${m.email?`<li><a href="mailto:${m.email}"><i class="fas fa-envelope"></i></a></li>`:''}
+            ${(!m.facebook&&!m.twitter&&!m.linkedin&&!m.email)?`
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+              <li><a href="#"><i class="fab fa-youtube"></i></a></li>`:''}
+          </ul>
         </div>
       </div>
     `).join('');
