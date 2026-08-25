@@ -1436,11 +1436,31 @@ img { max-width: 100%; display: block; }
   color: white;
 }
 .faq-body {
-  padding: 20px;
-  background: #f9f9f9;
-  font-size: 13.5px;
+  padding: 24px;
+  background: #f8fafc;
+  font-size: 14px;
   color: var(--text-mid);
   line-height: 1.8;
   display: none;
+  border-top: 1px solid var(--border);
 }
 .faq-body.open { display: block; }
+.faq-body p { margin-bottom: 14px; }
+.faq-body p:last-child { margin-bottom: 0; }
+.faq-body ol, .faq-body ul {
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+.faq-body ol { list-style-type: decimal; }
+.faq-body ul { list-style-type: disc; }
+.faq-body li {
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.faq-body li p { margin-bottom: 4px; }
+.faq-header button.faq-button i {
+  transition: transform 0.2s ease;
+}
+.faq-header button.faq-button:not(.collapsed) i {
+  transform: rotate(90deg);
+}

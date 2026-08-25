@@ -57,6 +57,7 @@ var SITE_PAGES = [
   { name: 'Home', url: 'index.html', desc: 'Main portal for South Sudan Network of PLHIV (SSNeP+).' },
   { name: 'About Us', url: 'about.html', desc: 'SSNeP+ vision, mission and registration details.' },
   { name: 'Our Team', url: 'team.html', desc: 'Meet the executive leadership and program officers.' },
+  { name: 'FAQ', url: 'faq.html', desc: 'Frequently Asked Questions, PSEA reporting, Child Protection & Gender policies.' },
   { name: 'Our Programs & Services', url: 'programs.html', desc: 'HIV, Malaria, TB, Monitoring & Evaluation, Advocacy.' },
   { name: 'Portfolio & Events', url: 'portfolio.html', desc: 'USAID/AHEC project gallery and capacity building.' },
   { name: 'News & Updates', url: 'news.html', desc: 'Latest articles, press releases, and health program news.' },
