@@ -447,12 +447,55 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }, { threshold: 0.1 });
-    revealEls.forEach(function(el) {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
+  // --- Team Carousel Slider ---
+  var track = document.getElementById('teamCarouselTrack');
+  var prevBtn = document.getElementById('teamPrevBtn');
+  var nextBtn = document.getElementById('teamNextBtn');
+
+  if (track && prevBtn && nextBtn) {
+    var currentIndex = 0;
+
+    function getItemsPerView() {
+      var w = window.innerWidth;
+      if (w <= 480) return 1;
+      if (w <= 768) return 2;
+      if (w <= 1024) return 3;
+      return 4;
+    }
+
+    function updateCarousel() {
+      var items = track.querySelectorAll('.team-item');
+      if (!items.length) return;
+      var itemsPerView = getItemsPerView();
+      var maxIndex = Math.max(0, items.length - itemsPerView);
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      if (currentIndex < 0) currentIndex = 0;
+
+      var itemWidth = items[0].getBoundingClientRect().width;
+      var gap = 24;
+      var moveX = currentIndex * (itemWidth + gap);
+      track.style.transform = 'translateX(-' + moveX + 'px)';
+    }
+
+    prevBtn.addEventListener('click', function() {
+      currentIndex--;
+      if (currentIndex < 0) {
+        var items = track.querySelectorAll('.team-item');
+        currentIndex = Math.max(0, items.length - getItemsPerView());
+      }
+      updateCarousel();
     });
+
+    nextBtn.addEventListener('click', function() {
+      var items = track.querySelectorAll('.team-item');
+      var maxIndex = Math.max(0, items.length - getItemsPerView());
+      currentIndex++;
+      if (currentIndex > maxIndex) currentIndex = 0;
+      updateCarousel();
+    });
+
+    window.addEventListener('resize', updateCarousel);
   }
 
 });
+
