@@ -218,37 +218,40 @@ const CMS = {
   renderNews() {
     const container = document.getElementById('cms-news-list');
     if (!container) return;
-    const news = this.get('news', []).filter(n => n.status==='published')
-                     .sort((a,b) => new Date(b.date) - new Date(a.date));
+    const news = this.get('news', []).filter(n => n.status==='published');
     if (!news || news.length === 0) return;
+    const defaultNewsImgs = {
+      1: 'assets/images/news-9.jpg',
+      2: 'assets/images/news-5.jpg',
+      3: 'assets/images/news-4.jpg',
+      4: 'assets/images/news-3.jpg',
+      5: 'assets/images/news-2.jpg'
+    };
     const fmtDate = d => d ? new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) : '';
-    container.innerHTML = news.map(n => `
-      <div class="news-item">
-        <div class="news-item-img" style="background:linear-gradient(135deg,#1565C0,#0D47A1);display:flex;align-items:center;justify-content:center;color:white;font-size:28px;overflow:hidden;">
-          ${n.imageUrl
-            ? `<img src="${n.imageUrl}" alt="${this.esc(n.title)}" style="width:100%;height:100%;object-fit:cover;">`
-            : '📰'
-          }
-        </div>
-        <div class="news-item-body">
-          <h3><a href="#">${this.esc(n.title)}</a></h3>
-          <div class="news-meta">
-            <span><i class="fas fa-calendar" style="margin-right:4px;"></i>${fmtDate(n.date)}</span>
-            <span><i class="fas fa-tag" style="margin-right:4px;"></i>${this.esc(n.category)}</span>
+    container.innerHTML = news.map((n, i) => {
+      const src = n.imageUrl || defaultNewsImgs[n.id] || defaultNewsImgs[i+1] || 'assets/images/news-9.jpg';
+      const detailLink = `news-detail-${n.id||1}.html`;
+      return `
+        <div class="news-card-item" style="display:flex; flex-direction:column; gap:16px; margin-bottom:40px; background:#fff; border:1px solid var(--border); border-radius:6px; overflow:hidden;">
+          <a href="${detailLink}">
+            <img src="${src}" alt="${this.esc(n.title)}" style="width:100%; height:320px; object-fit:cover;" />
+          </a>
+          <div style="padding:20px 24px 28px;">
+            <div style="display:flex; gap:16px; font-size:12px; color:var(--blue); margin-bottom:10px;">
+              <span><i class="far fa-folder" style="margin-right:4px;"></i> ${this.esc(n.category||'News')}</span>
+              <span><i class="far fa-calendar-alt" style="margin-right:4px;"></i> ${fmtDate(n.date)}</span>
+            </div>
+            <h3 style="font-size:20px; font-weight:700; margin-bottom:12px; line-height:1.4;">
+              <a href="${detailLink}" style="color:var(--text-dark);">${this.esc(n.title)}</a>
+            </h3>
+            <p style="font-size:14px; color:var(--text-mid); line-height:1.8; margin-bottom:16px;">
+              ${this.esc(n.excerpt||'')}
+            </p>
+            <a href="${detailLink}" class="btn-cta" style="padding:9px 20px; font-size:12px;">Read More <i class="fas fa-chevron-circle-right"></i></a>
           </div>
-          <p>${this.esc(n.excerpt||'')}</p>
-          <a href="#" class="read-more" style="margin-top:10px;display:inline-flex;">Read More</a>
         </div>
-      </div>
-    `).join('') || '<p style="color:#94a3b8;padding:20px;">No published posts yet.</p>';
-
-    // Sidebar recent posts
-    const sidebar = document.getElementById('cms-recent-posts');
-    if (sidebar) {
-      sidebar.innerHTML = news.slice(0,6).map(n => `
-        <li><a href="#">${this.esc(n.title)}</a></li>
-      `).join('');
-    }
+      `;
+    }).join('');
   },
 
   // ---- CONTACT ----
