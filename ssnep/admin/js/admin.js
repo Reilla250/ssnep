@@ -74,12 +74,12 @@ const Store = {
       {id:6,title:'Stigma & Discrimination',icon:'🤝',status:'active',description:'"Silence can be damaging" — eliminating stigma and discrimination against PLHIV in healthcare settings.',imageUrl:'assets/images/service-19.jpg'},
     ],
     portfolio: [
-      {id:1,title:'Quarterly Board Meetings',category:'institutional',icon:'📋',description:'Institutional Capacity Building',imageUrl:'assets/images/portfolio-1.jpeg'},
-      {id:2,title:'Capacity Building to PLHIV Member Associations',category:'institutional',icon:'🎓',description:'Institutional Capacity Building',imageUrl:'assets/images/portfolio-2.jpeg'},
-      {id:3,title:'Food Distribution and Care to PLHIVs',category:'health',icon:'🍱',description:'Health Program',imageUrl:'assets/images/portfolio-3.jpeg'},
-      {id:4,title:'Tuberculosis Treatment Program',category:'health',icon:'🩺',description:'Health Program',imageUrl:'assets/images/portfolio-4.jpeg'},
-      {id:5,title:'Malaria Program — ITMNs Distribution',category:'health',icon:'🦟',description:'Health Program',imageUrl:'assets/images/portfolio-5.jpeg'},
-      {id:6,title:'HIV/AIDS Awareness Programme',category:'advocacy',icon:'🎗️',description:'Advocacy and Resource Mobilization',imageUrl:'assets/images/portfolio-6.jpeg'},
+      {id:1,title:'Quarterly Board Meetings',category:'institutional',icon:'📋',description:'Institutional Capacity building',imageUrl:'assets/images/portfolio-6.jpeg'},
+      {id:2,title:'Capacity Building to PLHIV Member Associations',category:'health',icon:'🎓',description:'Health',imageUrl:'assets/images/portfolio-5.jpeg'},
+      {id:3,title:'Food Distribution and Care to PLHIVs',category:'health',icon:'🍱',description:'Health',imageUrl:'assets/images/portfolio-4.jpeg'},
+      {id:4,title:'Tuberculosis Treatment Program',category:'health',icon:'🩺',description:'Health',imageUrl:'assets/images/portfolio-3.jpeg'},
+      {id:5,title:'Malaria Program — ITMNs Distribution',category:'health',icon:'🦟',description:'Health',imageUrl:'assets/images/portfolio-2.jpeg'},
+      {id:6,title:'HIV/AIDS Awareness Programme',category:'health',icon:'🎗️',description:'Health',imageUrl:'assets/images/portfolio-1.jpeg'},
     ],
     messages: [
       {id:1,name:'John Deng',email:'john@example.com',subject:'Partnership Inquiry',message:'We would like to partner with SSNeP+ on an upcoming health initiative.',date:'2024-08-20',read:false},

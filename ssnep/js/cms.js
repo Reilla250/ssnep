@@ -162,19 +162,27 @@ const CMS = {
     if (!container) return;
     const programs = this.get('programs', []).filter(p => p.status === 'active').slice(0, limit);
     if (!programs || programs.length === 0) return;
-    container.innerHTML = programs.map(p => `
-      <div class="program-card" style="overflow:hidden;border-radius:12px;">
-        ${p.imageUrl
-          ? `<div class="program-card-img-wrap" style="height:190px;overflow:hidden;"><img src="${p.imageUrl}" alt="${this.esc(p.title)}" style="width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease;"></div>`
-          : `<div class="program-card-img-placeholder">${p.icon||'📌'}</div>`
-        }
-        <div class="program-card-body">
-          <h3>${this.esc(p.title)}</h3>
-          <p>${this.esc(p.description||'')}</p>
-          <a href="programs.html" class="read-more">Read More</a>
+    const defaultImages = {
+      1: 'assets/images/service-1.png',
+      2: 'assets/images/service-2.jpeg',
+      3: 'assets/images/service-3.jpg',
+      4: 'assets/images/service-5.jpg',
+      5: 'assets/images/service-6.jpg',
+      6: 'assets/images/service-19.jpg'
+    };
+    container.innerHTML = programs.map(p => {
+      const src = p.imageUrl || defaultImages[p.id] || 'assets/images/service-1.png';
+      return `
+        <div class="program-card">
+          <img src="${src}" alt="${this.esc(p.title)}" class="program-card-img" />
+          <div class="program-card-body">
+            <h3><a href="service-detail-${p.id||1}.html" style="color:var(--text-dark);">${this.esc(p.title)}</a></h3>
+            <p>${this.esc(p.description||'')}</p>
+            <a href="service-detail-${p.id||1}.html" class="read-more">Read More <i class="fas fa-chevron-circle-right"></i></a>
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   },
 
   // ---- PORTFOLIO ----
@@ -183,19 +191,27 @@ const CMS = {
     if (!container) return;
     const items = this.get('portfolio', []);
     if (!items || items.length === 0) return;
-    const bgColors = ['#1565C0','#2E7D32','#E65100','#4A148C','#00695C','#B71C1C'];
-    container.innerHTML = items.map((p, i) => `
-      <div class="portfolio-item" data-category="${this.esc(p.category)}" id="port-${p.id}">
-        ${p.imageUrl
-          ? `<img src="${p.imageUrl}" alt="${this.esc(p.title)}" style="width:100%;height:100%;object-fit:cover;">`
-          : `<div class="portfolio-placeholder" style="background:linear-gradient(135deg,${bgColors[i%bgColors.length]},${bgColors[(i+1)%bgColors.length]});width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:52px;">${p.icon||'📁'}</div>`
-        }
-        <div class="portfolio-overlay">
-          <h3>${this.esc(p.title)}</h3>
-          <p>${this.esc(p.description||'')}</p>
+    const defaultImages = {
+      1: 'assets/images/portfolio-6.jpeg',
+      2: 'assets/images/portfolio-5.jpeg',
+      3: 'assets/images/portfolio-4.jpeg',
+      4: 'assets/images/portfolio-3.jpeg',
+      5: 'assets/images/portfolio-2.jpeg',
+      6: 'assets/images/portfolio-1.jpeg'
+    };
+    container.innerHTML = items.map((p, i) => {
+      const src = p.imageUrl || defaultImages[p.id] || defaultImages[i+1] || 'assets/images/portfolio-6.jpeg';
+      return `
+        <div class="portfolio-item" data-category="${this.esc(p.category||'all')}" id="port-${p.id}">
+          <img src="${src}" alt="${this.esc(p.title)}" style="width:100%;height:100%;object-fit:cover;" />
+          <div class="portfolio-overlay">
+            <h4><a href="portfolio-detail-${p.id||1}.html" style="color:white;">${this.esc(p.title)}</a></h4>
+            <span class="portfolio-category">${this.esc(p.description||p.category||'Project')}</span>
+            <a href="${src}" target="_blank" class="gallery-icon-btn" style="margin-top:10px; width:40px; height:40px; font-size:14px;" aria-label="View photo"><i class="fas fa-search-plus"></i></a>
+          </div>
         </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   },
 
   // ---- NEWS ----
