@@ -436,8 +436,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // --- Scroll reveal ---
-  var revealEls = document.querySelectorAll('.program-card, .team-card, .zero-card, .portfolio-item, .news-item, .choose-item, .feature-item');
-  if ('IntersectionObserver' in window) {
+  var revealEls = document.querySelectorAll('.program-card, .zero-card, .portfolio-item, .news-item, .choose-item, .feature-item');
+  if ('IntersectionObserver' in window && revealEls.length) {
     var observer = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -447,6 +447,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     }, { threshold: 0.1 });
+    revealEls.forEach(function(el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+  }
+
   // --- Team Carousel Slider ---
   var track = document.getElementById('teamCarouselTrack');
   var prevBtn = document.getElementById('teamPrevBtn');
@@ -477,7 +485,8 @@ document.addEventListener('DOMContentLoaded', function() {
       track.style.transform = 'translateX(-' + moveX + 'px)';
     }
 
-    prevBtn.addEventListener('click', function() {
+    prevBtn.addEventListener('click', function(e) {
+      e.preventDefault();
       currentIndex--;
       if (currentIndex < 0) {
         var items = track.querySelectorAll('.team-item');
@@ -486,7 +495,8 @@ document.addEventListener('DOMContentLoaded', function() {
       updateCarousel();
     });
 
-    nextBtn.addEventListener('click', function() {
+    nextBtn.addEventListener('click', function(e) {
+      e.preventDefault();
       var items = track.querySelectorAll('.team-item');
       var maxIndex = Math.max(0, items.length - getItemsPerView());
       currentIndex++;
@@ -495,7 +505,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     window.addEventListener('resize', updateCarousel);
+    setTimeout(updateCarousel, 200);
   }
 
 });
+
 

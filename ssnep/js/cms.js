@@ -111,35 +111,44 @@ const CMS = {
     const container = document.getElementById('cms-team-grid');
     if (!container) return;
     const team = this.get('team', []);
-    // Only replace static HTML if admin has actually saved custom team members
     if (!team || team.length === 0) return;
-    container.innerHTML = team.map(m => `
-      <div class="team-item">
-        <div style="overflow:hidden;position:relative;height:240px;background:linear-gradient(135deg,${m.color||'#1565C0'},${m.color||'#0D47A1'}dd);">
-          ${m.photoUrl
-            ? `<img src="${m.photoUrl}" alt="${this.esc(m.name)}" style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;">`
-            : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:60px;font-weight:700;color:white;">${m.initials||'?'}</div>`
-          }
+
+    // Mapping default photo URLs
+    const defaultPhotos = {
+      1: 'assets/images/team-member-1.jpeg',
+      2: 'assets/images/team-member-2.jpeg',
+      3: 'assets/images/team-member-3.jpeg',
+      4: 'assets/images/team-member-4.jpeg',
+      5: 'assets/images/team-member-5.jpeg',
+      6: 'assets/images/team-member-7.jpeg',
+      7: 'assets/images/team-member-9.jpeg',
+      8: 'assets/images/team-member-18.png',
+      9: 'assets/images/team-member-19.jpeg',
+      10: 'assets/images/team-member-22.jpeg'
+    };
+
+    container.innerHTML = team.map(m => {
+      const src = m.photoUrl || defaultPhotos[m.id] || 'assets/images/team-member-1.jpeg';
+      return `
+        <div class="team-item">
+          <div class="team-photo">
+            <img src="${src}" alt="${this.esc(m.name)}" onError="this.onerror=null;this.src='assets/images/team-member-1.jpeg';" />
+          </div>
+          <div class="team-text">
+            <a href="team.html">${this.esc(m.name)}</a>
+            <p>${this.esc(m.role)}</p>
+          </div>
+          <div class="team-social">
+            <ul>
+              <li><a href="${m.facebook || '#'}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="${m.twitter || '#'}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="${m.linkedin || '#'}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+              <li><a href="${m.youtube || '#'}" target="_blank"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+          </div>
         </div>
-        <div class="team-text">
-          <a href="team.html">${this.esc(m.name)}</a>
-          <p>${this.esc(m.role)}</p>
-        </div>
-        <div class="team-social-bar">
-          <ul>
-            ${m.facebook?`<li><a href="${m.facebook}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>`:''}
-            ${m.twitter?`<li><a href="${m.twitter}" target="_blank"><i class="fab fa-twitter"></i></a></li>`:''}
-            ${m.linkedin?`<li><a href="${m.linkedin}" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>`:''}
-            ${m.email?`<li><a href="mailto:${m.email}"><i class="fas fa-envelope"></i></a></li>`:''}
-            ${(!m.facebook&&!m.twitter&&!m.linkedin&&!m.email)?`
-              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-              <li><a href="#"><i class="fab fa-youtube"></i></a></li>`:''}
-          </ul>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   },
 
   // ---- PROGRAMS ----

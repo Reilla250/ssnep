@@ -319,7 +319,7 @@ function openTeamModal(mode='add', id=null) {
   document.getElementById('teamModalTitle').textContent = mode==='add'?'Add Team Member':'Edit Team Member';
   if (mode==='edit' && id) {
     const m = Store.get('team',[]).find(t=>t.id===id); if (!m) return;
-    ['name','role','email','phone','bio','facebook','twitter','linkedin','status'].forEach(f=>{
+    ['name','role','email','phone','bio','facebook','twitter','linkedin','status','photoUrl'].forEach(f=>{
       const el = document.getElementById('tf_'+f); if(el) el.value = m[f]||'';
     });
     document.getElementById('tf_color').value = m.color||'#1565C0';
@@ -339,6 +339,7 @@ function saveTeam() {
   if (!name||!role) { toast('Name and role required.','error'); return; }
   const data = {
     name, role,
+    photoUrl: document.getElementById('tf_photoUrl').value.trim(),
     email:    document.getElementById('tf_email').value.trim(),
     phone:    document.getElementById('tf_phone').value.trim(),
     bio:      document.getElementById('tf_bio').value.trim(),
