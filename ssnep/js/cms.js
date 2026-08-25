@@ -22,6 +22,7 @@ const CMS = {
       'about':     () => this.renderAbout(),
       'team':      () => this.renderTeam(),
       'programs':  () => this.renderPrograms(),
+      'service':   () => this.renderPrograms(),
       'portfolio': () => this.renderPortfolio(),
       'news':      () => this.renderNews(),
       'contact':   () => this.renderContact(),
@@ -160,6 +161,7 @@ const CMS = {
     const container = document.querySelector(selector);
     if (!container) return;
     const programs = this.get('programs', []).filter(p => p.status === 'active').slice(0, limit);
+    if (!programs || programs.length === 0) return;
     container.innerHTML = programs.map(p => `
       <div class="program-card" style="overflow:hidden;border-radius:12px;">
         ${p.imageUrl
@@ -180,6 +182,7 @@ const CMS = {
     const container = document.getElementById('cms-portfolio-grid');
     if (!container) return;
     const items = this.get('portfolio', []);
+    if (!items || items.length === 0) return;
     const bgColors = ['#1565C0','#2E7D32','#E65100','#4A148C','#00695C','#B71C1C'];
     container.innerHTML = items.map((p, i) => `
       <div class="portfolio-item" data-category="${this.esc(p.category)}" id="port-${p.id}">
@@ -201,6 +204,7 @@ const CMS = {
     if (!container) return;
     const news = this.get('news', []).filter(n => n.status==='published')
                      .sort((a,b) => new Date(b.date) - new Date(a.date));
+    if (!news || news.length === 0) return;
     const fmtDate = d => d ? new Date(d).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) : '';
     container.innerHTML = news.map(n => `
       <div class="news-item">
